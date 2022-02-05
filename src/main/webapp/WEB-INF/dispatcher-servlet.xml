@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+# xml의 dtd 선언 부분
+1. dtd : 상단에 어떤 태그를 사용할지를 선언하는 부분.
+2. dtd에 맞는 태그를 활용 할 수 있다.
+# 스프링은 이 dispacher-servlet.xml에서 선언한 클래스들을 
+객체로 컨테이너에서 로딩 후, 해당 객체들을 url 패턴으로 호출하여 처리한다.
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:util="http://www.springframework.org/schema/util"
+	 xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+  		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd     
+        http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+   		http://www.springframework.org/schema/websocket
+		http://www.springframework.org/schema/websocket/spring-websocket.xsd" >
+		
+	<!-- 
+		springweb 하위에 있는 패키지는 자동 등록 처리
+		Component, controller, service, Repository 를 어노테이션한 것들은 
+		객체를 선언하여 메모리에 로딩된 것과 같다. 
+		
+		웹서버가 기동이 되면 모든 springweb에 있는 객체가 로딩된다.
+ 	
+	 -->	
+	<context:component-scan base-package="springweb">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/><!-- @Controller한 것은 해당 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>	
+	
+	
+	
+	<!-- 컨테이너에 공통 DB 설정 정보 가져오기  -->
+	<context:property-placeholder location="classpath:/resource/config"/>
+	
+	<!-- lib에 만들어진 객체들을 생성하고 사용 
+		1. DB처리를 위한 연결객체 선언과 활용 => config 파일에 있는 것이 DB연동 정보
+			config 안에 선언된 key를 아래 DB 연결 처리하는 정보에 설정
+	
+	-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" > <!-- 자원의 해제하는 처리의 메서드를 지정 -->
+	
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${user}"></property>
+		<property name="password" value="${pass}"></property>
+		
+	</bean>
+	<!-- 
+		2. mybatis 컨테이너에서 사용하기..
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- dataSource에 의해 연결된 객체 호출하기 -->
+	<property name="dataSource" ref="dataSource"></property> <!-- ref는 bean 이름이다. -->
+	<!-- 설정파일 지정하기 -->
+	<property name="configLocation" value="classpath:resource/mybatis.Spring.xml"></property>
+	
+	</bean>
+	
+	<!-- 3. Dao 인터페이스 패키지 선언하기 
+		mybatis 프레임워크에서 자동으로 만들어주는 추상메서드 ({} - body가 없는 메서드)를 
+		상속받은 실제 객체를 만들어준다. 이때, 인터페이스가 있는 패키지를 지정해야한다.
+			- 추가적으로 패키지가 더 필요할 때,
+				value="패키지1, 패키지2, 패키지3..." 형식으로 지정하면 된다. 
+	
+	-->
+	
+	
+	<!--  
+		### 등록 필요!!!!!!!!
+		
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="springweb.a02_MVC.a03_dao"></property>
+		
+	
+	</bean>
+
+	-->
+		
+</beans>
