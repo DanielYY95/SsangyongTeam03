@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>   
     <link rel="stylesheet" href="./css/header.css"/>
-    <link rel="stylesheet" href="./css/meet.css"/>
+    <link rel="stylesheet" href="./css/footer.css"/>
+    <link rel="stylesheet" href="./css/knowhow.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" 
      crossorigin="anonymous" 
@@ -33,7 +34,7 @@
     </head>
 	<div class="meet-container">
 		<div class="center">
-			<p>만남의 광장</p>
+			<p>노하우</p>
 			<div class="row">
 				<div class="col-md-9">
 			   	    <table class="table-list-search">
