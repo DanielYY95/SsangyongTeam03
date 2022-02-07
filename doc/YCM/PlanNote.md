@@ -36,3 +36,10 @@
     - 스크롤 내리면 이쁘게 나타나는 효과
       - 스크롤 했을 때 최상단이 해당 div의 위치 상단을 넘을 때
       - 참조: https://portpoliocss.yangchomyeong.repl.co
+ 
+ 
+
+## 이슈
+- media query에서 중복되는 경우에는 어떻게??
+
+- 스크롤 쪽 여백은 원래 있는 건가??
