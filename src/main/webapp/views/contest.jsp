@@ -27,9 +27,7 @@ referrerpolicy="no-referrer"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<head>
-		<jsp:include page="header.jsp" flush="true"/>
-	</head>
+	<jsp:include page="header.jsp" flush="true"/>
 	<div class="gall-content">
 		<p class="galltitle">공모전</p>
 		<ul class="gallery">

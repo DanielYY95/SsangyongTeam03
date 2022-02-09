@@ -88,16 +88,13 @@ footer {
 }
 
 .clearfix{
-    width: 80%;
-    margin: 0% 15% 0% 30%;
+	width:77%;
+    margin-left: 11%;
 }
 
 #footerBottom {
     padding: 30px 0 45px;
     text-align: left;
-}
-.area-box {
-    margin: 0 5.2%;
 }
 .footer-left-con {
     float: left;
@@ -158,40 +155,37 @@ footer {
     
 */
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
 
     b{
         font-size: 2rem;
-        padding-right: 80%;
+        
     }
 
     .clearfix{
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
         white-space: normal;
     }
 
-    .changeLine{
-        padding-right: 60%;
-    }
-  
 
-}
-
-
-
-@media screen and (min-width:577px) and (max-width: 768px) {
-    .clearfix{
-        width: 95%;
-        margin: 0% 15% 0% 5%;
+    .footer-left-con{
+        width: 100%;
+        margin: 0 auto;
     }
 
-    #footerInner{
+    
+    .footer-address{
+        width: 80%;
+        margin: 0 auto;
 
-        margin: 0 10%;
     }
 
 }
+
+
+
+
 
 
 @media screen and (min-width:769px) and (max-width: 992px) {
