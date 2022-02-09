@@ -46,7 +46,7 @@
 						</colgroup>
 			            <thead>
 	                   		<tr>
-		                       <th>No</th>
+		                       <th1>No</th>
 		                       <th>auther</th>
 		                       <th>Content</th>
 		                       <th>Date</th>
