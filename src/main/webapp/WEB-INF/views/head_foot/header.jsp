@@ -33,8 +33,9 @@
 			</head>
 
 			<body>
-				<!-- class="col" 을 하면 다 하나의 열로 배치된다.-->
 
+				<!-- class="col" 을 하면 다 하나의 열로 배치된다.-->
+			
 				<!-- header <i class="fas fa-camera-retro"></i>  -->
 				<header>
 					<div class="inner">
@@ -44,15 +45,24 @@
 							</a>
 							<h2>동네사진작가</h2>
 						</div>
-
-
+			
+			
 						<div class="sub-menu">
 							<div class="search">
 								<input type="text">
 								<div class="material-icons">
 									<a href="https://www.naver.com/">search</a>
 								</div>
+								<div class="m_menu"> <!-- 로그인 시와 로그 아웃 시를 분리 -->
+									<a href="/signin" class="bflogin">로그인</a>
+									<a href="./regcheck.html" class="bflogin">회원가입</a> 
+									<a href="/signin" class="aflogin">로그아웃</a>
+									<a href="javascript:void(0)" class="aflogin">마이페이지</a> 
+								</div>
+							
 							</div>
+			
+			
 							<ul class="menu">
 								<li>
 									<a href="/signin">로그인</a>
@@ -64,9 +74,13 @@
 									<a href="javascript:void(0)">마이페이지</a>
 								</li>
 							</ul>
-
-
+			
+			
 						</div>
+			
+				   
+			
+			
 						<div>
 							<ul class="main-menu">
 								<li class="item">
@@ -93,13 +107,45 @@
 						</div>
 					</div>
 				</header>
-
-
-
-
+			
+			
+			
+			
 				<script>
-					$("document").ready(function () { })
+					// 데스크탑 환경에서는 가린다.
+					$("document").ready(function () { 
+			
+						showhide();// 처음에는 가린 상태
+			
+						$(window).resize(function() { // 창 크기 조절 시에도 적용
+						   showhide();
+						})
+					})
+			
+					function showhide(){ //모바일, 테블릿 환경에서는 보이게. 데스크탑에서는 숨김.
+						if($(window).width() > 992) {   
+								$(".m_menu").hide();
+						}else{
+							$(".m_menu").show();
+						}
+					}
+			
+					function bflogin(){ // 세션값으로 유저 객체가 없다면
+						$(".aflogin").hide();
+						$(".bflogin").show();
+					}
+					
+					function aflogin(){ // 세션값으로 유저 객체가 있다면
+						$(".bflogin").hide();
+						$(".aflogin").show();
+					}
+			
+			
 				</script>
+			
+			
+			
 			</body>
+			
 
 			</html>

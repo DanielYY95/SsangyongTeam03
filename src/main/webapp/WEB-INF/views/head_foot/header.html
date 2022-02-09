@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="./header.css" />
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
         integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
@@ -51,7 +52,16 @@
                     <div class="material-icons">
                         <a href="https://www.naver.com/">search</a>
                     </div>
+                    <div class="m_menu"> <!-- 로그인 시와 로그 아웃 시를 분리 -->
+                        <a href="/signin" class="bflogin">로그인</a>
+                        <a href="./regcheck.html" class="bflogin">회원가입</a> 
+                        <a href="/signin" class="aflogin">로그아웃</a>
+                        <a href="javascript:void(0)" class="aflogin">마이페이지</a> 
+                    </div>
+                
                 </div>
+
+
                 <ul class="menu">
                     <li>
                         <a href="/signin">로그인</a>
@@ -66,6 +76,10 @@
 
 
             </div>
+
+       
+
+
             <div>
                 <ul class="main-menu">
                     <li class="item">
@@ -97,7 +111,35 @@
 
 
     <script>
-        $("document").ready(function () { })
+        // 데스크탑 환경에서는 가린다.
+        $("document").ready(function () { 
+
+            showhide();// 처음에는 가린 상태
+
+            $(window).resize(function() { // 창 크기 조절 시에도 적용
+               showhide();
+            })
+        })
+
+        function showhide(){ //모바일, 테블릿 환경에서는 보이게. 데스크탑에서는 숨김.
+            if($(window).width() > 992) {   
+                    $(".m_menu").hide();
+            }else{
+                $(".m_menu").show();
+            }
+        }
+
+        function bflogin(){ // 세션값으로 유저 객체가 없다면
+            $(".aflogin").hide();
+            $(".bflogin").show();
+        }
+        
+        function aflogin(){ // 세션값으로 유저 객체가 있다면
+            $(".bflogin").hide();
+            $(".aflogin").show();
+        }
+
+
     </script>
 
 
