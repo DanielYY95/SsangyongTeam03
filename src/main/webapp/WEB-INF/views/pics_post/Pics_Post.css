@@ -1,0 +1,39 @@
+
+#Post_Container{
+    width: 70%; 
+    margin: 0 auto; 
+    border: 1px solid black; 
+    padding: 10px;
+
+}
+
+.Post_Head, .Post_Bottom{
+    display:flex; 
+    justify-content: space-between;
+
+}
+
+.Post_Img{
+    width: 70%;
+        object-fit: cover; 
+        display: block; 
+        margin: 0px auto;
+}
+
+
+.mb-2{
+    width: 50%; 
+    margin: 0 auto;
+} /* 기본적인 textarea에  너비만 줄이고 가운데로 정렬 */
+
+#commentsBtn{
+    float: right;
+}
+
+.L_Arrow{
+    margin-left: 10%;
+}
+
+.R_Arrow{
+    margin-right: 10%;
+}
