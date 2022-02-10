@@ -69,7 +69,7 @@ body{
 }
 .com-del{
 	position: relative;
-    margin: -18% -4% 0% 91%;
+    margin: -16% -4% 0% 91%;
 }
 </style>
 </head>
