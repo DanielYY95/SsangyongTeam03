@@ -1,3 +1,8 @@
+html{
+    font-size: 16px;
+}
+
+
 #Pro_Pics_Container .row {
     width: 80%;
     margin: 0 auto;
@@ -21,8 +26,9 @@
 
 }
 
-#Pro_Pics_Container .filter a {
+#Pro_Pics_Container a {
     text-decoration: none;
+    color: black;
 
 }
 

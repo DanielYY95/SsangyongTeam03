@@ -16,6 +16,8 @@
     <title>Document</title>
 
     <link href="Pro_Pics.css" rel="stylesheet" /> <!-- CSS 파일 -->
+     <link href="new_header.css" rel="stylesheet" />
+    <link href="footer.css" rel="stylesheet" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!-- jquery 라이브러리 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +41,14 @@
         => 해결방법
             1.사진을 첨부했을 때 아예 같은 사이즈로 만든다.
             2. css를 사용하여 card-img-top클래스에 height 맞추고, object-fit:cover로 바꿔준다.
+
+
+        부트스트랩 문제
+        mx-auto 같은게 왜 작동이 안되지 ㅠㅠ
+
     -->
+    <jsp:include page="new_header.jsp" flush="true"/>
+    
 
     <div id="Pro_Pics_Container">
 
@@ -82,6 +91,82 @@
 
             </div>
         </div><br>
+
+        <div class="row">
+            <div class="card col-sm-6 col-lg-3 ">
+                <!-- card 형태 -->
+                <div class="profile">
+                    <!-- 프로필 사진과 닉네임 -->
+                    <span>프로필</span>
+                    <span>닉네임</span>
+                </div>
+                <a class="post" href="#">
+                    <img src="IMG/attraction.png" class="img-thumbnail card-img-top" alt="">
+                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
+
+                </a>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+
+            <div class="card col-sm-6 col-lg-3">
+                <!-- card 형태 -->
+                <div class="profile">
+                    <!-- 프로필 사진과 닉네임 -->
+                    <span>프로필</span>
+                    <span>닉네임</span>
+                </div>
+                <a href="#">
+                    <img src="IMG/mountain.png" class="img-thumbnail card-img-top" alt="">
+                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
+
+                </a>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+
+            <div class="card col-sm-6 col-lg-3">
+                <!-- card 형태 -->
+                <div class="profile">
+                    <!-- 프로필 사진과 닉네임 -->
+                    <span>프로필</span>
+                    <span>닉네임</span>
+                </div>
+                <a href="#">
+                    <img src="IMG/chicage.png" class="img-thumbnail card-img-top" alt="">
+                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
+
+                </a>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+
+            <div class="card col-sm-6 col-lg-3">
+                <!-- card 형태 -->
+                <div class="profile">
+                    <!-- 프로필 사진과 닉네임 -->
+                    <span>프로필</span>
+                    <span>닉네임</span>
+                </div>
+                <a href="#">
+                    <img src="IMG/sea.png" class="img-thumbnail card-img-top" alt="">
+                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
+
+                </a>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+
+
+        </div>
 
         <div class="row">
             <div class="card col-sm-6 col-lg-3 ">
@@ -157,15 +242,41 @@
             </div>
 
 
+        </div><br><br>
+
+        
+        <div style="width: 80%; margin: 0 auto;">
+            <ul class="pagination" style="width: 28%; margin: 0 auto;"> 
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
         </div>
+
+
 
 
         <!--end #### bootstrap: 갤러리형 #### -->
 
     </div>
+    
+    
+    <jsp:include page="footer.jsp" flush="true"/>
 
     <script>
         $("document").ready(function () { })
+
+        $(".post").click(function(){
+            location.href="Pics_Post.html";
+
+        })
+
+
+
     </script>
 
 
