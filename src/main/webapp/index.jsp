@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import="java.util.*"
-    errorPage ="errorPage.jsp" 
+    errorPage ="errorPage.jsp"
     %> <%-- 에러페이지 설정 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
-<fmt:requestEncoding value="utf-8"/>     
+<fmt:requestEncoding value="utf-8"/>
 <!DOCTYPE html>
 <%--
 
@@ -29,10 +29,10 @@
 		var vm = new Vue({
 			el:".container",
 			data:{msg:"${m01}"}
-		});	
-		<%-- 
-		
-		--%>	
+		});
+		<%--
+
+		--%>
 	});
 </script>
 </head>
@@ -58,7 +58,7 @@
    	<col width="15%">
    	<col width="10%">
     <thead>
-    
+
       <tr class="table-success text-center">
         <th>번호</th>
         <th>제목</th>
@@ -66,14 +66,14 @@
         <th>작성일</th>
         <th>조회</th>
       </tr>
-    </thead>	
+    </thead>
     <tbody>
     	<tr><td></td><td></td><td></td><td></td><td></td></tr>
     	<tr><td></td><td></td><td></td><td></td><td></td></tr>
     	<tr><td></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
-	</table>    
-    
+	</table>
+    <h2>수정햇어요.</h2>
 </div>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -94,7 +94,7 @@
 	        <input type="text" class="form-control" placeholder="직책명 입력" name="job">
 	      </div>
 	     </div>
-	    </form> 
+	    </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
