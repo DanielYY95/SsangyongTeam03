@@ -73,7 +73,6 @@
     	<tr><td></td><td></td><td></td><td></td><td></td></tr>
     </tbody>
 	</table>
-    <h2>수정햇어요.</h2>
 </div>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
