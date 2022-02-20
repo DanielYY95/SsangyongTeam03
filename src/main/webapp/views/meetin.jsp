@@ -6,13 +6,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/header.css"/>
+<link rel="stylesheet" href="./css/new_header.css"/>
 <link rel="stylesheet" href="./css/meetin.css"/>
 </head>
 <body>
-	<div class="header">
-     	<jsp:include page="header.jsp" flush="true"/>
-    </div>
+	<head>
+     	<jsp:include page="new_header.jsp" flush="true"/>
+    </head>
     <div class="container">
     	<div class="content-block">
     		<p class="title">만남의 광장</p>

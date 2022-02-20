@@ -2,7 +2,7 @@ CREATE TABLE Interview (
    IV_ID   varchar2(10) PRIMARY KEY,
    IV_KIND   varchar2(10),
    IV_DATE   date,
-   IV_PHOTO   varchar(300),
+   IV_PHOTO   varchar2(300),
    IV_TITLE   varchar2(100),
    IV_CONTENT   LONG
 );

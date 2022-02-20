@@ -9,7 +9,7 @@
 }
 
 html{
-    font-size: 10px; 
+    font-size: 16px; 
 }
 
 div {
@@ -88,13 +88,16 @@ footer {
 }
 
 .clearfix{
-	width:77%;
-    margin-left: 11%;
+    width: 80%;
+    margin: 0% 15% 0% 30%;
 }
 
 #footerBottom {
     padding: 30px 0 45px;
     text-align: left;
+}
+.area-box {
+    margin: 0 5.2%;
 }
 .footer-left-con {
     float: left;
