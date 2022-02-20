@@ -28,21 +28,12 @@
    		http://www.springframework.org/schema/websocket
 		http://www.springframework.org/schema/websocket/spring-websocket.xsd" >
 		
-	<!-- 
-		springweb 하위에 있는 패키지는 자동 등록 처리
-		Component, controller, service, Repository 를 어노테이션한 것들은 
-		객체를 선언하여 메모리에 로딩된 것과 같다. 
-		
-		웹서버가 기동이 되면 모든 springweb에 있는 객체가 로딩된다.
- 	
-	 -->	
+
 	<context:component-scan base-package="springweb">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/><!-- @Controller한 것은 해당 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>	
-	
-	
 	
 	<!-- 컨테이너에 공통 DB 설정 정보 가져오기  -->
 	<context:property-placeholder location="classpath:/resource/config"/>
@@ -72,24 +63,18 @@
 	
 	</bean>
 	
-	<!-- 3. Dao 인터페이스 패키지 선언하기 
-		mybatis 프레임워크에서 자동으로 만들어주는 추상메서드 ({} - body가 없는 메서드)를 
-		상속받은 실제 객체를 만들어준다. 이때, 인터페이스가 있는 패키지를 지정해야한다.
-			- 추가적으로 패키지가 더 필요할 때,
-				value="패키지1, 패키지2, 패키지3..." 형식으로 지정하면 된다. 
-	
-	-->
-	
-	
-	<!--  
-		### 등록 필요!!!!!!!!
-		
+	<!-- 3. Dao 인터페이스 패키지 선언하기 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="springweb.a02_MVC.a03_dao"></property>
-		
+		<property name="basePackage" value="springweb.Repository"></property> <!-- 원래 이쪽은 ctrl이 안된다.  -->
 	
 	</bean>
+	
+	<!-- view페이지 축소  -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="WEB-INF\views\"/>	 
+		<property name="suffix" value=".jsp"/>	 
+		<property name="order" value="0"/>
+	</bean> 
+	
 
-	-->
-		
 </beans>

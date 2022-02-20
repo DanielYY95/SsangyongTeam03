@@ -4,9 +4,36 @@
 <configuration>
 
 
-<settings> 
-	<setting name="mapUnderscoreToCamelCase" value="true"/> 
-</settings>
+	<settings> 
+		<setting name="mapUnderscoreToCamelCase" value="true"/> 
+	</settings>
+	
+	
+	<typeAliases>
+		<typeAlias alias="pp" type="springweb.vo.Pro_Pics"/>
+		<typeAlias alias="pl" type="springweb.vo.Pro_Like"/>
+		<typeAlias alias="pc" type="springweb.vo.Pro_Comment"/>
+		<typeAlias alias="lp" type="springweb.vo.Local_Pics"/>
+		<typeAlias alias="ll" type="springweb.vo.Local_Like"/>
+		<typeAlias alias="lc" type="springweb.vo.Local_Comment"/>
+		<typeAlias alias="kp" type="springweb.vo.Knowhow_Post"/>
+		<typeAlias alias="kc" type="springweb.vo.Knowhow_Comment"/>
+		<typeAlias alias="kl" type="springweb.vo.Knowhow_Like"/>
+		
+		
+	</typeAliases>
+	<mappers>
+		<mapper resource="resource/ppMapper.xml" />
+		<mapper resource="resource/plMapper.xml" />
+		<mapper resource="resource/pcMapper.xml" />
+		<mapper resource="resource/lpMapper.xml" />
+		<mapper resource="resource/llMapper.xml" />
+		<mapper resource="resource/lcMapper.xml" />
+		<mapper resource="resource/kpMapper.xml" />
+		<mapper resource="resource/kcMapper.xml" />
+		<mapper resource="resource/kcMapper.xml" />
+		
+	</mappers>
 
 
 </configuration>

@@ -21,32 +21,27 @@
 					type="text/javascript"></script>
 
 				<title>HTML5 BASIC(타이틀)</title>
+				<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 				
 				<style>
+				
 					/* 
 					    일반 태그
 					
 					*/
 					
-					*{
-					    padding: 0;
-					    margin: 0;
-					}
 					
-					html{
-					    font-size: 10px; 
-					}
 					
-					div {
+					footer div {
 					    display: block;
 					}
 					
-					ol, ul {
+					footer ol, footer ul {
 					    list-style: none;
 					    margin: 0;
 					    padding: 0;
 					}
-					ul {
+					footer ul {
 					    display: block;
 					    list-style-type: disc;
 					    margin-block-start: 1em;
@@ -55,31 +50,31 @@
 					    margin-inline-end: 0px;
 					    padding-inline-start: 40px;
 					}
-					li {
+					footer li {
 					    display: list-item;
 					    text-align: -webkit-match-parent;
 					}
-					b {
+					footer b {
 					    font-weight: bold;
 					}
 					
 					
-					a {
+					footer a {
 					    text-decoration: none;
 					}
 					
 					
 					user agent stylesheet
-					em {
+					footer em {
 					    font-style: italic;
 					}
 					
-					address, caption, cite, code, dfn, em, strong, th, var {
+					footer address, footer caption, footer cite, footer code, footer dfn, footer em, footer strong, footer th, footer var {
 					    font-weight: normal;
 					    font-style: normal;
 					}
 					
-					article {
+					footer article {
 					    display: block;
 					}
 					
@@ -185,7 +180,7 @@
 					
 					@media screen and (max-width: 768px) {
 					
-					    b{
+					    footer b{
 					        font-size: 2rem;
 					        
 					    }
@@ -212,54 +207,74 @@
 					}
 					
 					
+					
+					
+					
+					
 					@media screen and (min-width:769px) and (max-width: 992px) {
+					    
+					    
 					
 					    .clearfix{
 					        width: 100%;
 					        margin: 0% 10% 0% 12%;
 					    }
 					
+					
+					
 					}
+					
+					
+					
+					
+					
+										
+										
+										
+										
+					
+										
+									
+				
+				</style>
+				
+				
+			</head>
 
-	</style>
-	
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-</head>
-
-<body>
-	<!-- 가로 992px 정도에서 반응형 필요  부트스트랩 .col-lg- 에 맞춰-->
-	<!-- 휴대폰용으로는 400~500px 에서 Loaction 두 줄, tel/fax,  관리자 두 줄   576px .col-에 맞춰 -->
+			<body>
+				<!-- 가로 992px 정도에서 반응형 필요  부트스트랩 .col-lg- 에 맞춰-->
+				<!-- 휴대폰용으로는 400~500px 에서 Loaction 두 줄, tel/fax,  관리자 두 줄   576px .col-에 맞춰 -->
 
 
-	<footer id="footer">
-		<div id="footerInner" class="clearfix">
-			<article id="footerBottom">
-				<div class="area-box clearfix">
-					<article class="footer-left-con">
-						<div class="footer-address">
-							<p>
-								<b>Location.</b>
-								<span>132, Teheran-ro, Gangnam-gu, <span>Seoul, Republic of
-										Korea</span></span><br>
-								<span class="foot-info-menu">
-									<em class="fc-white"> </em><b>TEL. </b><span>+82 1-2345-6789</span><br>
-									<em class="fc-white"> </em><b>FAX. </b><span>+82 1-2345-6789</span><br>
-									<em class="fc-white"> </em><b>EMAIL. </b><a
-										href="mailto:hanga9030@naver.com">hanga09030@naver.com</a>
-								</span>
-							</p>
-							<div class="footer-copyright"><span class="fc-white">관리자</span></a><em
-									class="fc-white">
-								</em>| Copyright (C) 2022 <em class="fc-red">LOCAL PHOTO</em><em
-									class="fc-white">
-								</em>All rights reserved.</div>
-						</div>
-					</article>
+				<footer id="footer">
+					<div id="footerInner" class="clearfix">
+						<article id="footerBottom">
+							<div class="area-box clearfix">
+								<article class="footer-left-con">
+									<div class="footer-address">
+										<p>
+											<b>Location.</b>
+											<span>132, Teheran-ro, Gangnam-gu, <span>Seoul, Republic of
+													Korea</span></span><br>
+											<span class="foot-info-menu">
+												<em class="fc-white"> </em><b>TEL. </b><span>+82 1-2345-6789</span><br>
+												<em class="fc-white"> </em><b>FAX. </b><span>+82 1-2345-6789</span><br>
+												<em class="fc-white"> </em><b>EMAIL. </b><a
+													href="mailto:hanga9030@naver.com">hanga09030@naver.com</a>
+											</span>
+										</p>
+										<div class="footer-copyright"><span class="fc-white">관리자</span></a><em
+												class="fc-white">
+											</em>| Copyright (C) 2022 <em class="fc-red">LOCAL PHOTO</em><em
+												class="fc-white">
+											</em>All rights reserved.</div>
+									</div>
+								</article>
 
-				</div>
-			</article>
-		</div>
-	</footer>
-</body>
+							</div>
+						</article>
+					</div>
+				</footer>
+			</body>
 
-</html>
+			</html>

@@ -2,9 +2,9 @@ package springweb.Repository;
 
 import java.util.ArrayList;
 
-import springweb.vo.Pro_Pics;
 import springweb.vo.Pro_Comment;
 import springweb.vo.Pro_Like;
+import springweb.vo.Pro_Pics;
 
 public interface PP_Dao {
 	
@@ -26,7 +26,7 @@ public interface PP_Dao {
 	
 	
 	// 5. 태그별 조회리스트
-	public ArrayList<Pro_Pics> getPPListS(String sort);
+	public ArrayList<Pro_Pics> getPPListC(String category);
 	
 	
 	// 6. 게시물 등록
@@ -41,7 +41,7 @@ public interface PP_Dao {
 	
 	
 	// 9. 댓글 불러오기
-	public ArrayList<Pro_Comment> getPPComment(String pp_id); 
+	public ArrayList<Pro_Comment> getPPComment(String ppId); 
 	// 게시물의 고유번호가 매개변수가 되어야한다.
 	
 	// 10. 댓글 등록
@@ -51,7 +51,7 @@ public interface PP_Dao {
 	public void deletePPComment(String id);
 	
 	// 12. 좋아요 수 불러오기
-	public int getPPLikeCnt(String pp_id); 
+	public int getPPLikeCnt(String ppId); 
 	// 게시물의 고유번호를 갖고 댓글 수 가져오기
 	
 	// 13. 좋아요 등록
@@ -62,13 +62,13 @@ public interface PP_Dao {
 	// 
 	
 	// 14. 좋아요 등록여부 체크
-	public boolean hasPPLike(String pp_id, String member_id); 
+	public boolean hasPPLike(String ppId, String mId); 
 	// 게시물id와 유저 id를 검색했을 때 확인
 	// sql문은 아마 count(*) 했을 때 1이면 취소, 0이면 등록 그대로 진행
 	
 	
 	// 15. 좋아요 삭제
-	public void deletePPLike(String pp_id, String member_id);
+	public void deletePPLike(String ppId, String mId);
 	
 }
 
