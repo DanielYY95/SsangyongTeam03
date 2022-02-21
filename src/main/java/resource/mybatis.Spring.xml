@@ -3,7 +3,6 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-
 	<settings> 
 		<setting name="mapUnderscoreToCamelCase" value="true"/> 
 	</settings>
@@ -30,7 +29,7 @@
 		<mapper resource="resource/llMapper.xml" />
 		<mapper resource="resource/lcMapper.xml" />
 		<mapper resource="resource/kpMapper.xml" />
-		<mapper resource="resource/kcMapper.xml" />
+		<mapper resource="resource/klMapper.xml" />
 		<mapper resource="resource/kcMapper.xml" />
 		
 	</mappers>

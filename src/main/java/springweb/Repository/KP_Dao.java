@@ -6,7 +6,7 @@ import springweb.vo.Knowhow_Comment;
 import springweb.vo.Knowhow_Post;
 import springweb.vo.Local_Like;
 
-public interface KH_Dao {
+public interface KP_Dao {
 
 	
 	
@@ -42,7 +42,7 @@ public interface KH_Dao {
 	
 	
 	// 9. 댓글 불러오기
-	public ArrayList<Knowhow_Comment> getKPComment(String KP_id); 
+	public ArrayList<Knowhow_Comment> getKPComment(String kpId); 
 	// 게시물의 고유번호가 매개변수가 되어야한다.
 	
 	// 10. 댓글 등록
@@ -52,7 +52,7 @@ public interface KH_Dao {
 	public void deleteKPComment(String id);
 	
 	// 12. 좋아요 수 불러오기
-	public int getKPLikeCnt(String KP_id); 
+	public int getKPLikeCnt(String kpId); 
 	// 게시물의 고유번호를 갖고 댓글 수 가져오기
 	
 	// 13. 좋아요 등록
@@ -63,13 +63,13 @@ public interface KH_Dao {
 	// 
 	
 	// 14. 좋아요 등록여부 체크
-	public boolean hasKPLike(String KP_id, String member_id); 
+	public boolean hasKPLike(String kpId, String mId); 
 	// 게시물id와 유저 id를 검색했을 때 확인
 	// sql문은 아마 count(*) 했을 때 1이면 취소, 0이면 등록 그대로 진행
 	
 	
 	// 15. 좋아요 삭제
-	public void deleteKPLike(String KP_id, String member_id);
+	public void deleteKPLike(String kpId, String mId);
 	
 	
 }

@@ -18,9 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script> <!-- 부트스트랩 JS CDN -->
-    <link href="Pics_Post.css" rel="stylesheet" />
-    <link href="new_header.css" rel="stylesheet" />
-    <link href="footer.css" rel="stylesheet" />
+        
+    <link href="${path}/CSS/Pics_Post.css" rel="stylesheet" />
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!-- 부트스트랩  CSS CDN -->
@@ -34,15 +33,21 @@
 
 
     <style>
-   
+   	
 
     </style>
     
 
     </head>
 
-<body>
-    <jsp:include page="new_header.jsp" flush="true"/>
+<body >
+      <jsp:include page="../head_foot/new_header.jsp" flush="true"/>
+      
+      <% session.setAttribute("User", "asd456"); // 로그인한 아이디
+      	 session.setAttribute("ppId", "pp00150");	// 이건 제출하면 null로 넘어간다..
+      	 
+      	 
+      %>
 
     <div id="Post_Container" >
         <div>제목: </div>
@@ -52,9 +57,9 @@
                 <div>조회수: </div>
                 <div>등록일: </div>
             </div>
-        </div><br>
+        </div><hr><br>
 
-        <img class="Post_Img" src="IMG/chicage.png"><br>
+        <img class="Post_Img" src="../IMG/chicage.png"><br>
 
         <div>내용: 얼음 속에서 불러내는 것이 따뜻한 봄바람이다.</div><br>
 
@@ -63,14 +68,13 @@
         <div>
             <button class="btn btn-outline-secondary" style="border-radius: 15px;">태그</button>
             <a href="#">태그1</a>,
-            <a href="#">태그2</a>,
-            <a href="#">태그3</a>
+            <a href="#">태그2</a>
         </div><br>
 
         <div class="Post_Bottom">
             <div>
-                <button class="btn btn-success">댓글: 0</button>
-                <button id="likeBtn" class="btn btn-warning">좋아요: 0</button>
+                <button class="btn btn-success">댓글: <span class="commentCnt">${commentCnt}</span></button>
+                <button id="likeBtn" class="btn btn-warning">좋아요: <span class="likeCnt">${likeCnt}</span></button>
             </div>
 
 
@@ -124,7 +128,7 @@
 
     <div id="Comments_Container"> 
 
-        <div class="com-reg" style="display: flex; justify-content: space-between;">
+        <div class="com-reg" style="display: flex; justify-content: space-between; width: 80%; margin: 0 auto;">
             <div class="L_Arrow"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="150" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
               </svg><span style="padding-left: 20px;">이전 글</span></div>
@@ -144,78 +148,41 @@
 
 
         <!-- 가람님으로부터 가져온 것. container는 가져오지 않았음. -->
-        <div class="com-content-block">
+        <div class="com-content-block" style="width: 40%; margin: 0 auto;">
     		<p class="title">댓글</p>
-		    <div class="com-out-block">
-		    	<div class="com-in-block">
-		    		<span>
-			    		<img src="IMG/roofie.jpg"/>
-			    	</span>
-			    	<div class="com-write-block">
-				    	<span>
-				    		마둥석
-				    	</span>
-				    	<div class="com-view">
-			    			<span>그만 하고 싶다!!!!!!!!</span>
+    		
+    		<c:forEach var="comment" items="${clist}">
+    			<div class="com-out-block">
+			    	<div class="com-in-block">
+				    	<div class="com-write-block" style="border: 1px solid black; background-color: silver;">
+					    	<span class="fw-bold">
+					    		${comment.pcUser}
+					    	</span><br>
+					    	<div class="com-view" style="padding: 5px;">
+				    			<span>${comment.pcContent}</span>
+				    		</div>
+				    		<div style="display: flex; justify-content: space-between;">
+					    		<div class="com-date">
+					    			<span><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${comment.pcDate}"/></span>
+					    		</div>
+					    		<div class="com-del">
+				    				<button class="com-delBtn" onclick="deleteComment('${comment.pcId}')">삭제</button>
+				    			</div>
+			    			</div>
 			    		</div>
-			    		<div class="com-date">
-			    			<span>2022.02.10 00:00:00</span>
-			    		</div>
-			    		<div class="com-del">
-		    				<button class="com-delBtn">삭제</button>
-		    			</div>
-		    		</div>
-		    	</div>
-		    </div>
-		    <div class="com-out-block">
-		    	<div class="com-in-block">
-		    		<span>
-			    		<img src="IMG/roofie.jpg"/>
-			    	</span>
-			    	<div class="com-write-block">
-				    	<span>
-				    		마둥석
-				    	</span>
-				    	<div class="com-view">
-			    			<span>그만 하고 싶다!!!!!!!!</span>
-			    		</div>
-			    		<div class="com-date">
-			    			<span>2022.02.10 00:00:00</span>
-			    		</div>
-			    		<div class="com-del">
-		    				<button class="com-delBtn">삭제</button>
-		    			</div>
-		    		</div>
-		    	</div>
-		    </div>
-		    <div class="com-out-block">
-		    	<div class="com-in-block">
-		    		<span>
-                        <img src="IMG/roofie.jpg"/>
-			    	</span>
-			    	<div class="com-write-block">
-				    	<span>
-				    		마둥석
-				    	</span>
-				    	<div class="com-view">
-			    			<span>그만 하고 싶다!!!!!!!!</span>
-			    		</div>
-			    		<div class="com-date">
-			    			<span>2022.02.10 00:00:00</span>
-			    		</div>
-		    			<div class="com-del">
-		    				<button class="com-delBtn">삭제</button>
-		    			</div>
-		    		</div>
-		    	</div>
-		    </div>
+			    	</div>
+			    </div>
+    			
+    		</c:forEach>
+    		
+			
+		   
 		</div>
-
+		<br>
 
     </div>
-	
-	<jsp:include page="footer.jsp" flush="true"/>
-  
+
+  	  <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 
     <script>
 
@@ -239,13 +206,33 @@
                 // 조건문: if (getLike g == null)
             // 등록한 게 있으면 등록 취소 confirm 처리
 
+            // 가져올 때는 ""를 붙여서 가져와야한다.
+   		let id = "${ppId}";
+        let user = "${User}";
+            
+      
+            
         $("#likeBtn").click(function(){
+        	        	
             toastr.success('등록 완료!', '좋아요', {timeOut: 5000});
 
-            $.ajax(function(){
-
-
-            })
+            $.ajax({
+            	url:"${path}/pp_addLike.do",
+				type:"get",
+				data:"ppId="+id+"&plUser="+user,
+				dataType:"json",
+				success:function(data){ // 데이터를 받는 걸 못하고 있다...
+					console.log("수신 성공");
+					//console.log(data.msg);
+					let likeCnt = data.likeCnt; // 모델데이터 이렇게 받는거 맞지...? => 응 맞아.
+				    $(".likeCnt").text(likeCnt); // 좋아요 수를 반영해서 가져온다. 
+				},
+				error:function(error){
+					console.log("에러발생"+"error:"+error)
+				}
+            	
+	
+            });
         })
 
 
@@ -272,7 +259,8 @@
         // ## 글 목록 페이지
             // 누르면 해당 페이지로 이동
         $("#mainBtn").click(function(){
-			location.href="Pro_Pics.html" // 동네 혹은 전문가 사진 글목록 이동
+        	
+        	location.href="${path}/pp_listF.do"; // 동네 혹은 전문가 사진 글목록 이동
 		})
 
 
@@ -280,19 +268,69 @@
             // 매개변수: 현재 글의 고유번호에서 숫자 -1, +1를 하면 된다.
                 // getPost(int no)
 
+                
+        // ## 댓글창 숫자 표시
+        let length=0;
+        let ctext = $("#commentsText"); // 반복 사용하기때문에 변수 설정        
+                
 
         // ## 댓글 등록
         $("#commentsBtn").click(function(){
-            // 공백이면(trim을 했을 때) alert + 등록 취소 
-            toastr.warning('내용을 입력하세요!', '댓글', {timeOut: 5000});
-
+            
+        	let value= ctext.val();
+        	
+        	// 공백이면(trim을 했을 때) alert + 등록 취소 
+            if(value.trim()==""){
+        		toastr.warning('내용을 입력하세요!', '댓글', {timeOut: 5000});
+        		alert("내용을 입력하세요!");
+        		return;
+            }
+        	
+            $.ajax({
+            	url:"${path}/pp_addComment.do",
+				type:"get",
+				data:"ppId="+id+"&pcUser="+user+"&pcContent="+value,
+				dataType:"json",
+				success:function(data){ // 데이터를 받는 걸 못하고 있다...
+					console.log("수신 성공");
+					//console.log(data.msg);
+					let clist = data.clist; // 댓글 목록 가져오기
+					let commentCnt = data.commentCnt; // 댓글 수
+					ctext.text(commentCnt); // 좋아요 수를 반영해서 가져온다. 
+					location.reload();
+				},
+				error:function(error){
+					console.log("에러발생"+"error:"+error)
+				}
+            	
+	
+            });
             
         })
+        
+        // 댓글 삭제
+        // 얘처럼 뭐 받는게 없다면 dataType, type도 그냥 없애줘라. json 해놓으면 못받으면 에러뜬다.
+        function deleteComment(pcId){
+		    if(confirm("댓글을 삭제하시겠습니까?")){
+		        $.ajax({
+		            url:"${path}/pp_delComment.do", // S는 sort
+		            data: "pcId="+pcId, // 태그명을 넘겨준다.
+		            success:function(){
+		                console.log("삭제 성공");
+		                location.reload();
+		            },
+		            error:function(err){
+		                console.log("삭제 실패");
+		            }
+		    
+		    
+		        })
+		
+		    }
+
+		}
 
 
-        // ## 댓글창 숫자 표시
-        let length=0;
-        let ctext = $("#commentsText"); // 반복 사용하기때문에 변수 설정
 
         ctext.keyup(function(){
             length = ctext.val().length;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.PP_Dao">
+	
+	<!--  // 12. 좋아요 수 불러오기 -->	
+	<select id="getPPLikeCnt" parameterType="string" resultType="int">
+		select count(*) from PRO_LIKE
+		where PP_ID = #{ppId}
+	
+	</select>
+	
+	
+	<!--  // 13. 좋아요 등록 -->
+	
+	<insert id="insertPPLike" parameterType="pl" >
+		insert into PRO_LIKE values(
+			'PL' || LPAD(plId_seq.nextval,5,'0'), #{plUser}, #{ppId}
+		)
+	
+	</insert>
+	
+	
+	
+	<!--  // 14. 좋아요 등록여부 체크 -->
+	<select id="hasPPLike" parameterType="pl" resultType="int">
+		select count(*) from PRO_LIKE
+		where PP_ID = #{ppId}
+		AND PL_USER = #{plUser}
+		
+	</select>
+	
+	
+	
+	<!--  // 15. 좋아요 삭제 -->
+	<delete id="deletePPLike" parameterType="pl"> <!-- 매개변수가 2개이긴하나, 둘 다 String이고, 같은 VO객체 멤버변수라 괜춘  -->
+		delete from PRO_LIKE
+		where PP_ID = #{ppId}
+		AND PL_USER = #{plUser}
+	
+	</delete>
+	
+</mapper>
+
+
+
+
