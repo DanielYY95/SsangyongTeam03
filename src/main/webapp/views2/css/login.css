@@ -1,0 +1,89 @@
+
+.container {
+    width: 800px;
+	height: 500px;
+    position: relative;
+    box-shadow: 2px 10px 40px rgba(22, 20, 19, 0.4);
+    border-radius: 10px;
+    margin-top: 100px;
+    margin-left: 200px; 
+    padding:0px;
+    background-color: #dcdcdc;
+  }  
+  .logbox{
+      position: absolute;
+      width: 400px;
+	  height: 500px;
+      margin-top: 50px;
+      margin-left: 85px;
+  
+  }
+
+.log1{
+    background-image:url('https://i.pinimg.com/736x/b8/09/22/b80922f6ea2daaf36a6627378662803b--deck-of-cards-phone-wallpapers.jpg');
+    background-size:300px 400px;
+    background-repeat: no-repeat;
+    background-color:white;
+    width:300px;
+    height:400px;
+    display:inline-block;
+    position:absolute;
+	margin-left:50%;
+    border-radius:10px 10px 15px 15px;
+ }
+.logtext1{
+    color:black;
+    font-size:28px;
+    text-align:center;
+    font-weight: 300;
+    margin-top:100px;
+ }
+ .logtext2{
+    color:white;
+    font-size:16px;
+    font-weight: 300;
+    text-align:center;
+    margin-top:10px;
+ }
+ .log2{
+    background-color:white;
+    width:300px;
+    height:400px;
+    border-radius:15px;
+    position:absolute;
+    margin-left:140%;
+    display:inline-block;
+ }
+ .userlog{
+    font-weight: bold;
+    margin-top:30px;
+    margin-left: 60px;
+    margin-bottom: 0px;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: #F6F7F9;
+    color: #8a929f;
+    font-size: 14px;
+ }
+
+ .btn1{
+           width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background:#3c3c3c;
+            color: white;
+            font-size: 12px;
+           margin-top:40px;
+           margin-left:50px;
+           margin-bottom:30px;
+     }
+ .regbtn{
+   padding-left: 20px;
+  font-size: 13px;
+  cursor: pointer;
+
+ }
