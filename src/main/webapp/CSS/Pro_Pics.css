@@ -48,3 +48,9 @@
 #Pro_Pics_Container .view_filter a{
     padding-right: 10px;
 }
+
+
+#Pro_Pics_Container .card-body{
+	padding: 10px;
+}
+

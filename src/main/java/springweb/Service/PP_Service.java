@@ -3,12 +3,14 @@ package springweb.Service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import springweb.Repository.PP_Dao;
 import springweb.vo.Pro_Comment;
 import springweb.vo.Pro_Like;
 import springweb.vo.Pro_Pics;
 
+@Service 
 public class PP_Service {
 	
 	@Autowired
@@ -59,9 +61,9 @@ public class PP_Service {
 		
 		
 		// 8. 게시물 수정
-		public Pro_Pics updatePP(Pro_Pics ins) {
+		public void updatePP(Pro_Pics ins) {
 			
-			return dao.updatePP(ins);
+			dao.updatePP(ins);
 		}
 		
 		
@@ -98,20 +100,27 @@ public class PP_Service {
 
 		
 		// 14. 좋아요 등록여부 체크
-		public boolean hasPPLike(String ppId, String mId) {
+		public int hasPPLike(Pro_Like ins) {
 			
-			return dao.hasPPLike(ppId, mId);
+			return dao.hasPPLike(ins);
 		}
 
 		
 		// 15. 좋아요 삭제
-		public void deletePPLike(String ppId, String mId) {
+		public void deletePPLike(Pro_Like ins) {
 			
-			dao.deletePPLike(ppId, mId);
+			dao.deletePPLike(ins);
 		}
 		
+		// 16. 조회수 증가
+		public void addPPView(String ppId) {
+			dao.addPPView(ppId);
+		}
 	
-	
-	
+		// 17. 댓글 수 불러오기
+		public int getPPCommentCnt(String ppId) {
+			
+			return dao.getPPCommentCnt(ppId);
+		};
 
 }

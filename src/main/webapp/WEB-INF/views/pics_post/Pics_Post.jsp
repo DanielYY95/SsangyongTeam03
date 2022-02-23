@@ -44,26 +44,24 @@
       <jsp:include page="../head_foot/new_header.jsp" flush="true"/>
       
       <% session.setAttribute("User", "asd456"); // 로그인한 아이디
-      	 session.setAttribute("ppId", "pp00150");	// 이건 제출하면 null로 넘어간다..
-      	 
-      	 
+
       %>
 
     <div id="Post_Container" >
-        <div>제목: </div>
+        <div>제목: ${post.ppTitle}</div>
         <div class="Post_Head">
-            <div>작성자: </div>
+            <div>작성자: ${post.ppUser}</div>
             <div style="display: flex;"> 
-                <div>조회수: </div>
-                <div>등록일: </div>
+                <div>조회수: ${post.ppView}</div>&nbsp;&nbsp;
+                <div>등록일: <fmt:formatDate pattern="yyyy-MM-dd" value="${post.ppDate}"/></div>
             </div>
         </div><hr><br>
 
-        <img class="Post_Img" src="../IMG/chicage.png"><br>
+        <img class="Post_Img" style="height: 400px; object-fit:cover;" src="${path}${post.ppPhoto}"><br>
 
-        <div>내용: 얼음 속에서 불러내는 것이 따뜻한 봄바람이다.</div><br>
+        <div>내용: ${post.ppContent}</div><br>
 
-        <div>지역명: 서울특별시 @@구 </div><br>
+        <div>지역명: ${post.ppPlace} </div><br>
 
         <div>
             <button class="btn btn-outline-secondary" style="border-radius: 15px;">태그</button>
@@ -74,7 +72,9 @@
         <div class="Post_Bottom">
             <div>
                 <button class="btn btn-success">댓글: <span class="commentCnt">${commentCnt}</span></button>
-                <button id="likeBtn" class="btn btn-warning">좋아요: <span class="likeCnt">${likeCnt}</span></button>
+  				<c:set var="likeColor" value="${hasLike ==1? 'red':'black'}" /> <!-- 조건에 따라 색깔 변경 -->
+               	<button id="likeBtn" class="btn btn-warning" style="color: ${likeColor}">좋아요: <span class="likeCnt">${likeCnt}</span></button>
+           
             </div>
 
 
@@ -90,6 +90,7 @@
 
     </div><br>
 
+	<!-- 신고창  -->
     <div class="modal fade " id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered"> <!-- modal-dialog-centered 모달창을 웹브라우저 가운데로-->
             <div class="modal-content">
@@ -125,7 +126,7 @@
     </div>
 
     
-
+	<!-- 댓글 -->
     <div id="Comments_Container"> 
 
         <div class="com-reg" style="display: flex; justify-content: space-between; width: 80%; margin: 0 auto;">
@@ -187,19 +188,19 @@
     <script>
 
 
-
-
-
         // 다시 페이지을 호출하는 것이 아니라 ajax를 통해 가져온다. 똑같이 controller을 호출하는 것이지만
         // 일부데이터만 다시 가져오는 것이기에 속도면에서 긍정적일 것.
 
-
+		let id = "${ppId}";
+        let user = "${User}";
+      	let hasLike = "${hasLike}";
+        
+        
         $("document").ready(function () { 
             $(".etcReason").hide();
+            
 
         })
-
-
 
         // 좋아요 버튼
             // 좋아요 테이블을 거쳐서 만약에 등록한 게 없으면 등록 실시 => get 좋아요
@@ -207,10 +208,9 @@
             // 등록한 게 있으면 등록 취소 confirm 처리
 
             // 가져올 때는 ""를 붙여서 가져와야한다.
-   		let id = "${ppId}";
-        let user = "${User}";
-            
-      
+   	
+      	
+      	
             
         $("#likeBtn").click(function(){
         	        	
@@ -226,6 +226,17 @@
 					//console.log(data.msg);
 					let likeCnt = data.likeCnt; // 모델데이터 이렇게 받는거 맞지...? => 응 맞아.
 				    $(".likeCnt").text(likeCnt); // 좋아요 수를 반영해서 가져온다. 
+					hasLike = data.hasLike;
+				    
+				    // 이 녀석을 ajax 바깥에다가 두면 ajax가 처리되는 동안 이 녀석이 먼저 처리되서..
+					 if(hasLike==1){ // 왜 0일떄지..?
+			            	$("#likeBtn").css("color","red"); 
+			            	// vue 활용할 것 
+			            	// :class="[조건? 'ture일 경우 class' : 'false일 경우 class']"        
+		            }else{
+		            	$("#likeBtn").css("color","black"); 
+		            }
+			    
 				},
 				error:function(error){
 					console.log("에러발생"+"error:"+error)
@@ -233,6 +244,9 @@
             	
 	
             });
+            
+           
+            
         })
 
 
@@ -260,7 +274,7 @@
             // 누르면 해당 페이지로 이동
         $("#mainBtn").click(function(){
         	
-        	location.href="${path}/pp_listF.do"; // 동네 혹은 전문가 사진 글목록 이동
+        	location.href="${path}/pp_list.do"; // 동네 혹은 전문가 사진 글목록 이동
 		})
 
 

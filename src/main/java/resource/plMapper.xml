@@ -25,7 +25,7 @@
 	
 	
 	
-	<!--  // 14. 좋아요 등록여부 체크 -->
+	<!--  // 14. 좋아요 등록여부 체크  -->
 	<select id="hasPPLike" parameterType="pl" resultType="int">
 		select count(*) from PRO_LIKE
 		where PP_ID = #{ppId}

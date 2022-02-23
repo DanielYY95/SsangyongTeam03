@@ -11,8 +11,7 @@
 	public ArrayList<Pro_Pics> getPPList(); -->
 	
 	<select id="getPPList" resultType="pp">
-		select * from PRO_PICS	
-	
+		select * from PRO_PICS
 	</select>
 	
 	

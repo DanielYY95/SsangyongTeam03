@@ -26,8 +26,37 @@
     <!-- 부트스트랩  CSS CDN -->
 
 
-
 </head>
+    <% session.setAttribute("User", "asd456"); 
+      %>
+    
+<script>
+	let User = "${User}";
+	
+	function goDetail(ppId){
+	
+		location.href="${path}/pp_post.do?ppId="+ppId+"&plUser="+User;
+		
+		// 자바스크립트로 호출하기 때문에 화면전환이 되는 것이 아니라 return "view"에 해당하는 html 값이 나온다. 
+		// form으로 보내야만 post방식으로 보낼 수 있다. 
+		
+		 /*$.ajax({
+	        url:"${path}/pp_post.do", // url에 이동은 안하고 그냥 데이터를 보내주기만 하네? 
+	        data: "ppId="+ppId, // 태그명을 넘겨준다.
+	        success:function(){
+	            console.log("이동 성공");
+	            console.log(ppId);
+	            //location.href="${path}/pp_post.do"; //이걸 해줘야 url 이동이 된다. 
+	        },
+	        error:function(err){
+	            console.log("이동 실패");
+	        }
+		})
+		*/
+	}
+	
+
+</script>
 
 <body>
 
@@ -47,16 +76,14 @@
     -->
     <jsp:include page="../head_foot/new_header.jsp" flush="true"/>
     
-     <% session.setAttribute("ppUser", "asd456"); 
-      %>
-    
+ 
     
 
     <div id="Pro_Pics_Container">
 
         <div class="title">전문가사진</div><br>
 
-
+		<!-- 필터 -->
         <div class="filter">
 
 
@@ -101,180 +128,51 @@
             // 3. 좋아요 조회수 우측 상단 /// 제목 프로필 닉네임 하단
 
             배경색깔; f7f7f7;
-            
-            
+       
             ### 게시물을 눌렀을 때 게시물의 고유번호가 어떻게 넘어가느냐?
             애초에 매인에서 게시물 리스트가 등장.
             c:forEach 이렇게 할껀데 뭐 <tr onclick="detail(empno)" 했던 것처럼 넘겨주면 된다!!! 
-            
-        
+  
         -->
-
-        <div class="row">
-            <div class="card col-sm-6 col-lg-3 ">
-                <!-- card 형태 -->
-                <div class="profile">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                <a class="post" href="#">
-                    <img src="IMG/attraction.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-
-            <div class="card col-sm-6 col-lg-3">
-                <!-- card 형태 -->
-                <div class="profile" style="display: flex; justify-content: space-between;">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <div><span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                    <P><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                      </svg> 1254</P>
-                </div>
-                <a href="#">
-                    <img src="IMG/mountain.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body" style="text-align: center;">
-                    <span class="card-text" style="font-size: 1.3rem; font-weight: 600;">&nbsp;&nbsp;김포의 청춘&nbsp;&nbsp;</span>
-                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                      </svg> 152&</span>
-                </div>
-            </div>
-
-            <div class="card col-sm-6 col-lg-3">
-                <!-- card 형태 -->
-                
-                <div class="profile" style="display: flex; padding-left: 350px;">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <div>
-                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                            </svg> 152 &nbsp;&nbsp;</span>
-                    </div>
-                    <P><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                      </svg> 1254</P>
-                </div>
-                <a href="#">
-                    <img src="IMG/mountain.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body" style="text-align: center;">
-                    <span class="card-text" style="font-size: 1.3rem; font-weight: 600;">&nbsp;&nbsp;김포의 청춘&nbsp;&nbsp;</span>
-                      <span>닉네임</span>
-                </div>
-            </div>
-
-            <div class="card col-sm-6 col-lg-3">
-                <!-- card 형태 -->
-                <div class="profile">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                <a href="#">
-                    <img src="IMG/sea.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="row">
-            <div class="card col-sm-6 col-lg-3 ">
-                <!-- card 형태 -->
-                <div class="profile">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                <a href="#">
-                    <img src="IMG/attraction.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-
-            <div class="card col-sm-6 col-lg-3">
-                <!-- card 형태 -->
-                <div class="profile">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                <a href="#">
-                    <img src="IMG/mountain.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-
-            <div class="card col-sm-6 col-lg-3">
-                <!-- card 형태 -->
-                <div class="profile">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                <a href="#">
-                    <img src="IMG/chicage.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-
-            <div class="card col-sm-6 col-lg-3">
-                <!-- card 형태 -->
-                <div class="profile">
-                    <!-- 프로필 사진과 닉네임 -->
-                    <span>프로필</span>
-                    <span>닉네임</span>
-                </div>
-                <a href="#">
-                    <img src="IMG/sea.png" class="img-thumbnail card-img-top" alt="">
-                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-
-                </a>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-
-
+		
+		
+		<div class="row">
+			<c:forEach var="pp" items="${pplist}">
+				<div class="card col-sm-6 col-lg-3 ">
+	                <!-- card 형태 -->
+	                <div style="display:flex; justify-content: space-between;">
+		                <div class="profile">
+		                    <!-- 프로필 사진과 닉네임 -->
+		                    <span>프로필</span>
+		                    <span>${pp.ppUser }</span>
+		                </div>
+		             	<div><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+		                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+		                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+		                      </svg> ${pp.ppView}</span>
+		                     <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+	                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+	      <!--  pp.ppLikecnt} --> </svg></span></div>
+                     </div>
+	             
+	                
+	                <a class="post" href="#">
+	                    <img src="${path}${pp.ppPhoto}" class="img-thumbnail card-img-top" 
+	                    alt="사진을 찾을 수 없음." onclick="goDetail('${pp.ppId}')">
+	                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
+	
+	                </a>
+	                <div class="card-body">
+	                	
+	                    <span style="display: block; text-align: center;" class="card-text" style="text-align:center;">${pp.ppTitle}</span>
+	                    <span style="float:right;"><fmt:formatDate pattern="yyyy-MM-dd" value="${pp.ppDate}"/></span>
+	                </div>
+	            </div>
+			
+			</c:forEach>
+		</div>
+			
+		 <!--  <img src="${path}/upload/sea.png" /> -->
         </div><br><br>
 
         
@@ -290,26 +188,15 @@
             </ul>
         </div>
 
-
-
-
         <!--end #### bootstrap: 갤러리형 #### -->
 
-    </div>
+  
     
     
     <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 
     <script>
-        $("document").ready(function () { })
-
-        $(".post").click(function(){
-            location.href="${path}/pp_post.do";
-
-        })
-        
-          
-        
+       
         // 정렬을 눌렀을때, 글자 css 변경 + 정렬 실행
         $(".view_filter a").click(function(){
         	

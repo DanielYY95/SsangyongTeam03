@@ -2,10 +2,13 @@ package springweb.Repository;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import springweb.vo.Pro_Comment;
 import springweb.vo.Pro_Like;
 import springweb.vo.Pro_Pics;
 
+@Repository
 public interface PP_Dao {
 	
 	
@@ -37,7 +40,7 @@ public interface PP_Dao {
 	
 	
 	// 8. 게시물 수정
-	public Pro_Pics updatePP(Pro_Pics ins);
+	public void updatePP(Pro_Pics ins);
 	
 	
 	// 9. 댓글 불러오기
@@ -62,13 +65,21 @@ public interface PP_Dao {
 	// 
 	
 	// 14. 좋아요 등록여부 체크
-	public boolean hasPPLike(String ppId, String mId); 
+	public int hasPPLike(Pro_Like ins); 
 	// 게시물id와 유저 id를 검색했을 때 확인
 	// sql문은 아마 count(*) 했을 때 1이면 취소, 0이면 등록 그대로 진행
 	
 	
 	// 15. 좋아요 삭제
-	public void deletePPLike(String ppId, String mId);
+	public void deletePPLike(Pro_Like ins);
+	
+	
+	// 16. 조회수 증가
+	public void addPPView(String ppId);
+	
+	// 17. 댓글 수 불러오기
+	public int getPPCommentCnt(String ppId);
+	
 	
 }
 

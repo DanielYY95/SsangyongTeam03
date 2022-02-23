@@ -11,10 +11,10 @@ public class Pro_Pics {
 	private String ppCategory;
 	private String ppHash;
 	private String ppPlace;
-	private int ppLike;
 	private int ppView;
 	private Date ppDate;
-	private String mId;
+	private String ppUser; 
+	
 	
 	public Pro_Pics() {
 		super();
@@ -22,7 +22,7 @@ public class Pro_Pics {
 	}
 
 	public Pro_Pics(String ppId, String ppTitle, String ppContent, String ppPhoto, String ppCategory, String ppHash,
-			String ppPlace, int ppLike, int ppView, Date ppDate, String mId) {
+			String ppPlace, int ppView, Date ppDate, String ppUser) {
 		super();
 		this.ppId = ppId;
 		this.ppTitle = ppTitle;
@@ -31,10 +31,9 @@ public class Pro_Pics {
 		this.ppCategory = ppCategory;
 		this.ppHash = ppHash;
 		this.ppPlace = ppPlace;
-		this.ppLike = ppLike;
 		this.ppView = ppView;
 		this.ppDate = ppDate;
-		this.mId = mId;
+		this.ppUser = ppUser;
 	}
 
 	public String getPpId() {
@@ -93,14 +92,6 @@ public class Pro_Pics {
 		this.ppPlace = ppPlace;
 	}
 
-	public int getPpLike() {
-		return ppLike;
-	}
-
-	public void setPpLike(int ppLike) {
-		this.ppLike = ppLike;
-	}
-
 	public int getPpView() {
 		return ppView;
 	}
@@ -117,14 +108,13 @@ public class Pro_Pics {
 		this.ppDate = ppDate;
 	}
 
-	public String getmId() {
-		return mId;
+	public String getPpUser() {
+		return ppUser;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setPpUser(String ppUser) {
+		this.ppUser = ppUser;
 	}
-	
 	
 	
 	
