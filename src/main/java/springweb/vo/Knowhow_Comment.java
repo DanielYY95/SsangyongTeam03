@@ -3,10 +3,10 @@ package springweb.vo;
 import java.util.Date;
 
 public class Knowhow_Comment {
-
 	
+
 	private String kcId;
-	private String kcUser;
+	private String kcUser; // 댓글 등록자ID
 	private String kcContent;
 	private Date kcDate;
 	private String kpId;

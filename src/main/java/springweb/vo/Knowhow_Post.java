@@ -8,26 +8,21 @@ public class Knowhow_Post {
 	private String kpContent;
 	private int kpView;
 	private Date kpDate;
-	private int kpLike;
-	private String mId;
+	private String kpUser; 
 	
 	public Knowhow_Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	// 매개변수의 갯수...
-	
-	public Knowhow_Post(String kpId, String kpTitle, String kpContent, int kpView, Date kpDate, int kpLike,
-			String mId) {
+
+	public Knowhow_Post(String kpId, String kpTitle, String kpContent, int kpView, Date kpDate, String kpUser) {
 		super();
 		this.kpId = kpId;
 		this.kpTitle = kpTitle;
 		this.kpContent = kpContent;
 		this.kpView = kpView;
 		this.kpDate = kpDate;
-		this.kpLike = kpLike;
-		this.mId = mId;
+		this.kpUser = kpUser;
 	}
 
 	public String getKpId() {
@@ -70,20 +65,12 @@ public class Knowhow_Post {
 		this.kpDate = kpDate;
 	}
 
-	public int getKpLike() {
-		return kpLike;
+	public String getKpUser() {
+		return kpUser;
 	}
 
-	public void setKpLike(int kpLike) {
-		this.kpLike = kpLike;
-	}
-
-	public String getmId() {
-		return mId;
-	}
-
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setKpUser(String kpUser) {
+		this.kpUser = kpUser;
 	}
 	
 	

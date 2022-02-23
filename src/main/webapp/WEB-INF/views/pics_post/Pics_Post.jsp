@@ -70,7 +70,7 @@
         </div><br>
 
         <div class="Post_Bottom">
-            <div>
+            <div> 
                 <button class="btn btn-success">댓글: <span class="commentCnt">${commentCnt}</span></button>
   				<c:set var="likeColor" value="${hasLike ==1? 'red':'black'}" /> <!-- 조건에 따라 색깔 변경 -->
                	<button id="likeBtn" class="btn btn-warning" style="color: ${likeColor}">좋아요: <span class="likeCnt">${likeCnt}</span></button>
@@ -226,7 +226,7 @@
 					//console.log(data.msg);
 					let likeCnt = data.likeCnt; // 모델데이터 이렇게 받는거 맞지...? => 응 맞아.
 				    $(".likeCnt").text(likeCnt); // 좋아요 수를 반영해서 가져온다. 
-					hasLike = data.hasLike;
+					hasLike = data.hasLike; // 만약에 제가 등록했다고 기록이 있으면
 				    
 				    // 이 녀석을 ajax 바깥에다가 두면 ajax가 처리되는 동안 이 녀석이 먼저 처리되서..
 					 if(hasLike==1){ // 왜 0일떄지..?

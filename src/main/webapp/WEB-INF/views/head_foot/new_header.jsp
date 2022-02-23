@@ -44,12 +44,9 @@
 		    	
 		/*
 		    일반 태그
-		    
-		
-		
 		    body  폰트: font-family: 'Nanum Myeongjo', serif;
 		    동네사진작가 => font-family: 'Song Myung', serif; 
-		    
+		   
 		*/
 		
 		
@@ -215,7 +212,7 @@
                 <a href="/">동네작가사진</a>
             </div>
             <div>
-                <a href="/">전문가사진</a>
+                <a href="${path}/pp_list.do">전문가사진</a>
             </div>
             <div>
                 <a href="/">노하우</a>

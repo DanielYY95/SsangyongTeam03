@@ -1,5 +1,7 @@
 package springweb.vo;
 
+import java.util.Date;
+
 public class Local_Pics {
 	
 	private String lpId;
@@ -9,9 +11,9 @@ public class Local_Pics {
 	private String lpCategory;
 	private String lpHash;
 	private String lpPlace;
-	private int lpLike;
 	private int lpView;
-	private String mId;
+	private Date lpDate;
+	private String lpUser;
 	
 	public Local_Pics() {
 		super();
@@ -19,7 +21,7 @@ public class Local_Pics {
 	}
 
 	public Local_Pics(String lpId, String lpTitle, String lpContent, String lpPhoto, String lpCategory, String lpHash,
-			String lpPlace, int lpLike, int lpView, String mId) {
+			String lpPlace, int lpView, Date lpDate, String lpUser) {
 		super();
 		this.lpId = lpId;
 		this.lpTitle = lpTitle;
@@ -28,9 +30,9 @@ public class Local_Pics {
 		this.lpCategory = lpCategory;
 		this.lpHash = lpHash;
 		this.lpPlace = lpPlace;
-		this.lpLike = lpLike;
 		this.lpView = lpView;
-		this.mId = mId;
+		this.lpDate = lpDate;
+		this.lpUser = lpUser;
 	}
 
 	public String getLpId() {
@@ -89,14 +91,6 @@ public class Local_Pics {
 		this.lpPlace = lpPlace;
 	}
 
-	public int getLpLike() {
-		return lpLike;
-	}
-
-	public void setLpLike(int lpLike) {
-		this.lpLike = lpLike;
-	}
-
 	public int getLpView() {
 		return lpView;
 	}
@@ -105,15 +99,22 @@ public class Local_Pics {
 		this.lpView = lpView;
 	}
 
-	public String getmId() {
-		return mId;
+	public Date getLpDate() {
+		return lpDate;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setLpDate(Date lpDate) {
+		this.lpDate = lpDate;
 	}
 
-	
+	public String getLpUser() {
+		return lpUser;
+	}
+
+	public void setLpUser(String lpUser) {
+		this.lpUser = lpUser;
+	}
+
 	
 	
 	

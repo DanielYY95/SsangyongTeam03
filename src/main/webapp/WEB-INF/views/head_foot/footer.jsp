@@ -109,16 +109,15 @@
 					
 					.clearfix{
 					    width: 80%;
-					    margin: 0% 15% 0% 30%;
+					    margin: 0 auto;
 					}
 					
 					#footerBottom {
 					    padding: 30px 0 45px;
 					    text-align: left;
 					}
-					.area-box {
-					    margin: 0 5.2%;
-					}
+					
+					
 					.footer-left-con {
 					    float: left;
 					}

@@ -62,17 +62,16 @@ public interface LP_Dao {
 		// 
 		
 		// 14. 좋아요 등록여부 체크
-		public boolean hasLPLike(String lpId, String mId); 
+		public boolean hasLPLike(String lpId, String llUser); 
 		// 게시물id와 유저 id를 검색했을 때 확인
 		// sql문은 아마 count(*) 했을 때 1이면 취소, 0이면 등록 그대로 진행
 		
 		
 		// 15. 좋아요 삭제
-		public void deleteLPLike(String lpId, String mId);
+		public void deleteLPLike(String lpId, String llUser);
 		
-	
+		// 16. 조회수 증가
+		public void addLPView(String lpId);
 
-
-	
 	
 }

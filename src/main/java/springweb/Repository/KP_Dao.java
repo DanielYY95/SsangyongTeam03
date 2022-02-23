@@ -63,13 +63,17 @@ public interface KP_Dao {
 	// 
 	
 	// 14. 좋아요 등록여부 체크
-	public boolean hasKPLike(String kpId, String mId); 
+	public boolean hasKPLike(String kpId, String klUser); 
 	// 게시물id와 유저 id를 검색했을 때 확인
 	// sql문은 아마 count(*) 했을 때 1이면 취소, 0이면 등록 그대로 진행
 	
 	
 	// 15. 좋아요 삭제
-	public void deleteKPLike(String kpId, String mId);
+	public void deleteKPLike(String kpId, String klUser);
+	
+	
+	// 16. 조회수 증가
+	public void addKPView(String kpId);
 	
 	
 }

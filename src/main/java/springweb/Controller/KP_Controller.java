@@ -12,7 +12,7 @@ public class KP_Controller {
 	@ExceptionHandler(Exception.class)
 	public String errorCatcher(Exception ex) {
 		
-		return "\\WEB-INF\\views\\pics_post\\Pro_Pics.jsp";
+		return "에러를 보여줄 view화면"; 
 	}
 	
 	
@@ -22,7 +22,7 @@ public class KP_Controller {
 //		d.addAttribute("khlist", service.getPPList(Comparator));
 		
 		
-		return "\\WEB-INF\\views\\pics_post\\Pro_Pics.jsp";
+		return "view단";
 	}
 	
 	
