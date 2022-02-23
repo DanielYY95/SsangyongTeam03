@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.KP_Dao">
+	
+	<!--  // 12. 좋아요 수 불러오기 -->	
+	<select id="getKPLikeCnt" parameterType="string" resultType="int">
+		select count(*) from KNOWHOW_LIKE
+		where KP_ID = #{KP_ID}
+	
+	</select>
+	
+	
+	<!--  // 13. 좋아요 등록 -->
+	
+	<insert id="insertKPLike" parameterType="kl" >
+		insert into KNOWHOW_LIKE values(
+			#{KL_ID}, #{KL_USER}, #{KP_ID}
+		)
+	
+	</insert>
+	
+	
+	
+	<!--  // 14. 좋아요 등록여부 체크 -->
+	<select id="hasKPLike" parameterType="string" resultType="boolean">
+		select count(*) from KNOWHOW_LIKE
+		where KP_ID = #{KP_ID}
+		AND KL_USER = #{KL_USER}
+		
+	</select>
+	
+	
+	
+	<!--  // 15. 좋아요 삭제 -->
+	<delete id="deleteKPLike" parameterType="string"> <!-- 매개변수가 2개이긴하나, 둘 다 String이고, 같은 VO객체 멤버변수라 괜춘  -->
+		delete from KNOWHOW_LIKE
+		where KP_ID = #{KP_ID}
+		AND KL_USER = #{KL_USER}
+		
+	</delete>
+	
+	
+</mapper>
+
+
+
+

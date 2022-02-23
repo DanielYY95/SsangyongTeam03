@@ -2,11 +2,17 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-
-<settings> 
-	<setting name="mapUnderscoreToCamelCase" value="true"/> 
-</settings>
-
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="sp" type="springweb.vo.Scout_Post"/>
+		<typeAlias alias="ct" type="springweb.vo.Contest"/>
+		<typeAlias alias="pm" type="springweb.vo.PageMaker"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="resource/spMapper.xml"/>
+		<mapper resource="resource/ctMapper.xml"/>
+	</mappers>
 
 </configuration>

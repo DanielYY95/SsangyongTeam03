@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.KP_Dao">
+		<!--  // 9. 댓글 불러오기
+	// 게시물의 고유번호가 매개변수가 되어야한다.
+	-->
+	<select id="getKPComment" parameterType="string" resultType="kc"> <!-- 프로필 사진은 추후에..... -->
+		select * from knowhow_comment
+		where kp_id = #{kp_id}
+		
+	</select>
+	
+	<!--  // 10. 댓글 등록 -->
+	<insert id="insertKPComment" parameterType="kc">
+		insert into knowhow_comment values(
+			#{KC_ID},#{KC_USER}, #{KC_CONTENT},sysdate, #{KP_ID})
+	
+	</insert> 
+	
+
+	<!--  KPC00001 
+		
+		KPC || LPAD(id_seq,5,0)
+	-->
+
+	<!--  // 11. 댓글 삭제 -->
+	<delete id="deleteKPComment" parameterType="string">
+		delete from knowhow_comment 
+		where kc_id = #{kc_id}
+	
+	</delete>
+
+	
+	
+</mapper>
+
+
+
+
