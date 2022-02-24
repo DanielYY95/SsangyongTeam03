@@ -54,7 +54,7 @@ $(document).ready(function() {
 	<head>
      	<jsp:include page="new_header.jsp" flush="true"/>
     </head>
-	<div class="meet-container" style="min-height:480px;">
+	<div class="meet-container" style="min-height:840px;">
 		<div class="center">
 			<p>스카웃 후기</p>
 			<div class="row">
