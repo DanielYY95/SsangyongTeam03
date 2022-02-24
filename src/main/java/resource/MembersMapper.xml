@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >		
+
+<mapper namespace="springweb.DAO.MembersDao">
+	<insert id="insertMembers" parameterType="members">
+		INSERT INTO members VALUES ( #{mName},#{mId}, 
+				#{mPass}, #{mAuth},  #{mProType}, 
+				 #{mPhone},  #{mBirth},  #{mNick},  #{mGender},  
+				 '', '', sysdate )
+	</insert> 
+	<!-- 
+	<resultMap type="Members" id="MembersR">
+		<result column="mId" property="id"/>
+		<result column="mPass" property="pass"/>
+	</resultMap> -->
+	
+	<select id="login"  parameterType="members" resultType="members" >
+		SELECT * FROM MEMBERS
+		WHERE mId = #{mId}
+		AND mPass = #{mPass}
+	</select>
+
+	
+</mapper>
