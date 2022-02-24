@@ -32,7 +32,7 @@ public class ScoutController {
 		d.addAttribute("recordTotal", count); // 15
 		d.addAttribute("recordCount", pm.getDisplayPageNum()); // 10
 
-		/**
+		/*
 		 * 15
 		 * paging 10
 		 * 15 / 10 = 1 + 1 (paging 갯수)

@@ -41,7 +41,7 @@ var pagingList = [];
 
 var htmlStr = "";
 for(var i=1 ; i <=pageCnt; i++){
-	htmlStr += '<li><a href="scout.do?startPage='+i+'">'+i+'</a></li>'
+	htmlStr += '<li><a style="font-size:1.5rem; color: black; text-decoration: none;" href="scout.do?startPage='+i+'">'+i+'</a></li>'
 };
 
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	<head>
      	<jsp:include page="new_header.jsp" flush="true"/>
     </head>
-	<div class="meet-container">
+	<div class="meet-container" style="min-height:480px;">
 		<div class="center">
 			<p>스카웃 후기</p>
 			<div class="row">
@@ -114,13 +114,6 @@ $(document).ready(function() {
 							<div class="out-paging">
 								<div class="in-paging">
 									<ul id="pagingList" class="page">
-<!-- 							             <li class="disabled"><a href="#">«</a></li>
-							             <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-							             <li><a href="#">2</a></li>
-							             <li><a href="#">3</a></li>
-							             <li><a href="#">4</a></li>
-							             <li><a href="#">5</a></li>
-							             <li><a href="#">»</a></li> -->
 						           </ul>
 					           </div>
 							</div>
@@ -130,5 +123,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>
