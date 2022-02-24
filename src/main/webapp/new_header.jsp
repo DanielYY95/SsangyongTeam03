@@ -192,9 +192,10 @@
                 </div>
                 
                 <div class="user">
+			 <!-- 수정_김효은 / 로그인 세션 유지를 보여주는 텍스트 -->
                 <c:if test="${not empty members.mId}">
-  						${members.mId} 로그인중<br>
-  								</c:if>
+  			${members.mId} 로그인중<br>
+  		</c:if>
                     <ul class="menu">
                         <li>
                             <a href="/springweb/web.do?method=login">로그인</a>
