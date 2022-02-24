@@ -1,0 +1,70 @@
+.container {
+    width: 800px;
+	height: 840px;
+    position: relative;
+    margin: auto;
+    box-shadow: 2px 10px 40px rgba(22, 20, 19, 0.4);
+    border-radius: 10px;
+    margin-top: 100px;
+    padding-top:10px;
+    background-color: #dcdcdc;
+  }  
+  /* 2/7 체크박스 추가 */
+#chk1{
+  padding-top: 20px;
+  font-size: 14px;
+  margin-left:40px
+}
+#chk2{
+  padding-top: 20px;
+   margin-left: 30px;
+   font-size: 14px;
+}
+  .btn1{
+          width: 180px;
+            height: 40px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background:#3c3c3c;
+            color: white;
+            font-size: 12px;
+           margin-top:40px;
+     }
+     .btnid{
+             width: 75px;
+            height: 30px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            background: gray;
+            color: white;
+            font-size: 12px;
+         }
+         
+  .regin{
+   background-color: white;
+   width:500px;
+   height:750px;
+   border-radius:15px;
+   position:absolute;
+   margin-left: 450px;
+   margin-top: 30px;
+   padding-left: 160px;
+}
+
+
+     .userReg{
+         display: flex;
+        height: 35px;
+        margin-top: 27px;
+        margin-bottom: 10px;
+        padding: 20px 15px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: #F6F7F9;    
+        color: black;
+        font-size: 13px;
+     }
+   
