@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>springweb</display-name>
+  <display-name>prj4</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,12 +9,21 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
-
-
+  <!-- 
+  # 스프링에서 지원하는 공통 servlet 설정
+  	
+  # 요청값에 대한 한글 encoding를 filter객체로 처리
+   -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		
+		<!--  404 에러 처리 -->
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
@@ -37,6 +46,18 @@
 		 스프링에서 지원하는 객체를 활용한다. 
 	-->
 	
+	<!-- 잘못 오는 경우 -->
+	<error-page>
+          <error-code>404</error-code>
+          <location>/WEB-INF/views/error404.jsp</location>
+ 	</error-page> 
+ 	
+ 	 <!--  
+ 	<error-page>
+          <error-code>500</error-code>
+          <location>/WEB-INF/views/error500.jsp</location>
+ 	</error-page> 
+	-->
 	
 	   
 </web-app>

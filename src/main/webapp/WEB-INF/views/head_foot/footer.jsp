@@ -29,8 +29,7 @@
 					    일반 태그
 					
 					*/
-					
-					
+				
 					
 					footer div {
 					    display: block;
@@ -67,6 +66,7 @@
 					user agent stylesheet
 					footer em {
 					    font-style: italic;
+					    
 					}
 					
 					footer address, footer caption, footer cite, footer code, footer dfn, footer em, footer strong, footer th, footer var {
@@ -98,7 +98,7 @@
 					
 					footer {
 					    display: block;
-					    font-size: 1.6rem;
+					    font-size: 1.4rem;
 					    width: 100%;
 					    
 					}
@@ -108,8 +108,8 @@
 					}
 					
 					.clearfix{
-					    width: 80%;
-					    margin: 0 auto;
+						margin-right: 5%;
+					    
 					}
 					
 					#footerBottom {
@@ -151,7 +151,7 @@
 					
 					.footer-copyright {
 					    padding-top: 25px;
-					    font-size: 13px;
+					    font-size: 1rem;
 					    font-weight: 400;
 					    letter-spacing: 0.2px;
 					    color: #999;
@@ -169,7 +169,10 @@
 					    display: none;
 					}
 					
-					
+					.footer-menu{
+						color: #d6d6d6;
+						font-weight: bold;
+					}
 					
 					
 					/* 
@@ -245,7 +248,7 @@
 				<!-- 휴대폰용으로는 400~500px 에서 Loaction 두 줄, tel/fax,  관리자 두 줄   576px .col-에 맞춰 -->
 
 
-				<footer id="footer">
+				<footer id="footer" style="display:flex; justify-content: center;">
 					<div id="footerInner" class="clearfix">
 						<article id="footerBottom">
 							<div class="area-box clearfix">
@@ -272,6 +275,14 @@
 
 							</div>
 						</article>
+					</div>
+					<div class="footer-menu"><br>
+						<div>공지사항</div>
+						<div>개인정보처리방침</div>
+						<div>고객센터</div>
+						<div>고객문의 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+							  <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+							</svg>1111-1111</div>
 					</div>
 				</footer>
 			</body>

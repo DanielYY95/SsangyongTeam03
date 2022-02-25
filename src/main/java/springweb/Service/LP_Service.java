@@ -102,16 +102,19 @@ public class LP_Service {
 	};
 	
 	// 14. 좋아요 등록여부 체크
-	public boolean hasLPLike(String lpId, String mId){
+	public boolean hasLPLike(String lpId, String llUser){
 		
-		return dao.hasLPLike(lpId, mId);
+		return dao.hasLPLike(lpId, llUser);
 	};
 	
 	// 15. 좋아요 삭제
-	public void deleteLPLike(String lpId, String mId) {
-		dao.deleteLPLike(lpId, mId);
+	public void deleteLPLike(String lpId, String llUser) {
+		dao.deleteLPLike(lpId, llUser);
 	}
 	
-	
+	// 16. 조회수 증가
+	public void addLPView(String lpId) {
+		dao.addLPView(lpId);
+	}
 	
 }

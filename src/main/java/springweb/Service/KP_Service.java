@@ -96,18 +96,22 @@ public class KP_Service {
 	}
 	
 	// 14. 좋아요 등록여부 체크
-	public boolean hasKPLike(String kpId, String mId){
+	public boolean hasKPLike(String kpId, String klUser){
 
 
-		return dao.hasKPLike(kpId, mId);
+		return dao.hasKPLike(kpId, klUser);
 	}
 	
 	// 15. 좋아요 삭제
-	public void deleteKPLike(String kpId, String mId){
+	public void deleteKPLike(String kpId, String klUser){
 		
-		dao.deleteKPLike(kpId, mId);
+		dao.deleteKPLike(kpId, klUser);
 	};
 	
-	
+	// 16. 조회수 증가
+		public void addKPView(String kpId) {
+			
+		dao.addKPView(kpId);
+	}
 	
 }

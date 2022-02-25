@@ -18,8 +18,10 @@
 		<typeAlias alias="kp" type="springweb.vo.Knowhow_Post"/>
 		<typeAlias alias="kc" type="springweb.vo.Knowhow_Comment"/>
 		<typeAlias alias="kl" type="springweb.vo.Knowhow_Like"/>
-		
-		
+		<typeAlias type="springweb.vo.Members" alias="members"/>
+		<typeAlias alias="sp" type="springweb.vo.Scout_Post"/>
+		<typeAlias alias="ct" type="springweb.vo.Contest"/>
+		<typeAlias alias="pm" type="springweb.vo.PageMaker"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/ppMapper.xml" />
@@ -31,6 +33,9 @@
 		<mapper resource="resource/kpMapper.xml" />
 		<mapper resource="resource/klMapper.xml" />
 		<mapper resource="resource/kcMapper.xml" />
+		<mapper resource="resource/MembersMapper.xml"/>
+		<mapper resource="resource/spMapper.xml"/>
+		<mapper resource="resource/ctMapper.xml"/>
 		
 	</mappers>
 

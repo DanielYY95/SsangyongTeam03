@@ -14,7 +14,6 @@
 		select * from PRO_PICS
 	</select>
 	
-	
 	<!--  // 2. 게시물 읽기
 	public Pro_Pics getPP(String id); // pp_id가 아직 미정.... -->
 		
@@ -23,7 +22,6 @@
 		where PP_ID = #{ppId}
 
 	</select>
-	
 	
 	<!--  // 3. 정렬기준 조회리스트 => order by 대신 인덱스를 사용하라?
 	public ArrayList<Pro_Pics> getPPListF(String comparator); -->

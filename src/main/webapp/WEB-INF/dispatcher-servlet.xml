@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-# xml의 dtd 선언 부분
-1. dtd : 상단에 어떤 태그를 사용할지를 선언하는 부분.
-2. dtd에 맞는 태그를 활용 할 수 있다.
-# 스프링은 이 dispacher-servlet.xml에서 선언한 클래스들을 
-객체로 컨테이너에서 로딩 후, 해당 객체들을 url 패턴으로 호출하여 처리한다.
- -->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:aop="http://www.springframework.org/schema/aop" 
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -56,10 +50,11 @@
 		2. mybatis 컨테이너에서 사용하기..
 	 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	
 	<!-- dataSource에 의해 연결된 객체 호출하기 -->
 	<property name="dataSource" ref="dataSource"></property> <!-- ref는 bean 이름이다. -->
 	<!-- 설정파일 지정하기 -->
-	<property name="configLocation" value="classpath:resource/mybatis.Spring.xml"></property>
+	<property name="configLocation" value="classpath:/resource/mybatis.Spring.xml"></property>
 	
 	</bean>
 	
@@ -73,8 +68,22 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="WEB-INF\views\"/>	 
 		<property name="suffix" value=".jsp"/>	 
-		<property name="order" value="0"/>
+		<property name="order" value="1"/>
 	</bean> 
+	
+	<!-- 정의한 view먼저 우선순위로 선언 -->
+	<bean id="btnViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property>
+	
+	</bean>
+	
+		<!-- json 뷰 선언 
+		return "pageJsonReport" -->
+	
+	<bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="contentType" value="text/html; charset=utf-8"></property>
+	</bean>
+	
 	
 
 </beans>

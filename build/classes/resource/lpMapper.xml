@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.LP_Dao">
+	
+			<!--  // 1. 전체 조회리스트
+	 -->
+	
+	<select id="getLPList" resultType="LP">
+		select * from LOCAL_PICS	
+	</select>
+	
+	
+	<!--  // 2. 게시물 읽기
+	 -->
+		
+	<select id="getLP" parameterType="string" resultType="LP">
+		select * from LOCAL_PICS
+		where LP_ID = #{LP_ID}
+
+	</select>
+	
+	
+	<!--  // 3. 정렬기준 조회리스트 => order by 대신 인덱스를 사용하라?
+ -->
+	
+	
+	<select id="getLPListF" parameterType="string" resultType="LP" >
+		select * from LOCAL_PICS
+		order by #{comparator} DESC;
+		
+	</select>
+	
+	<!--  // 4. 지역명 조회리스트
+	 -->
+	
+	<select id="getLPListP" parameterType="string" resultType="LP" >
+		select * from LOCAL_PICS
+		where LP_PLACE = #{LP_PLACE}
+		
+	</select>
+	
+	
+	<!--  // 5. 태그별 조회리스트
+	-->
+	
+	<select id="getLPListC" parameterType="string" resultType="LP" >
+		select * from LOCAL_PICS
+		where LP_CATEGORY = #{LP_CATEGORY}
+		
+	</select>
+	
+	
+	
+	<!--  // 6. 게시물 등록
+	 -->
+	
+	<insert id="insertLP" parameterType="LP">
+		insert into LOCAL_PICS values(
+			#{LP_ID}, #{LP_TITLE}, #{LP_CONTENT}, #{LP_PHOTO}, 
+			#{LP_CATEGORY}, #{LP_HASH}, #{LP_PLACE}, 0, sysdate,  #{LP_USER}
+		)
+	
+	</insert>
+	
+	
+	<!--  // 7. 게시물 삭제
+	 -->
+	
+	
+	<delete id="deleteLP" parameterType="string">
+		delete from LOCAL_PICS
+		where LP_ID = #{LP_ID}
+	
+	</delete>
+	
+	
+	<!--  // 8. 게시물 수정
+	
+	-->
+
+	<update id="updateLP" parameterType="LP">
+		update LOCAL_PICS
+			set LP_TITLE = #{LP_TITLE},  
+				LP_CONTENT = #{LP_CONTENT},
+				LP_PHOTO = #{LP_PHOTO},
+				LP_CATEGORY = #{LP_CATEGORY},
+				LP_HASH = #{LP_HASH},
+				LP_PLACE = #{LP_PLACE}
+			where LP_ID = #{LP_ID}  <!-- 이 부분이 좀 자신없네... property 인식하나? -->
+	
+	</update>
+	
+	<!-- 16. 조회수 증가 -->
+	<update id="addLPView" parameterType="string">
+		update local_pics
+			set LP_VIEW = LP_VIEW+1
+			where LP_ID = #{LP_ID}
+	
+	</update>
+	
+</mapper>
+
+
+
+

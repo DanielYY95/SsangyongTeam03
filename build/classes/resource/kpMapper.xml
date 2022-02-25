@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.KP_Dao">
+		
+			<!--  // 1. 전체 조회리스트
+	public ArrayList<KNOWHOW_POST> getKPList(); -->
+	
+	<select id="getKPList" resultType="KP">
+		select * from KNOWHOW_POST	
+	
+	</select>
+	
+	
+	<!--  // 2. 게시물 읽기
+	public KNOWHOW_POST getKP(String id); // KP_id가 아직 미정.... -->
+		
+	<select id="getKP" parameterType="string" resultType="KP">
+		select * from KNOWHOW_POST
+		where KP_ID = #{KP_ID}
+
+	</select>
+	
+	
+	<!--  // 3. 정렬기준 조회리스트 => order by 대신 인덱스를 사용하라?
+	public ArrayList<KNOWHOW_POST> getKPListF(String comparator); -->
+	
+	
+	<select id="getKPListF" parameterType="string" resultType="KP" >
+		select * from KNOWHOW_POST
+		order by #{comparator} DESC;
+		
+	</select>
+	
+	<!--  // 4. 글쓴이 조회리스트
+	public ArrayList<KNOWHOW_POST> getKPListP(String KP_WRITER); -->
+	
+	<select id="getKPListP" parameterType="string" resultType="KP" >
+		select * from KNOWHOW_POST
+		where KP_USER = #{KP_USER}
+		
+	</select>
+	
+	
+	<!--  // 5. 제목별 조회리스트
+	public ArrayList<KNOWHOW_POST> getKPListC(String category); -->
+	
+	<select id="getKPListC" parameterType="string" resultType="KP" >
+		select * from KNOWHOW_POST
+		where KP_TITLE = #{KP_TITLE}
+		
+	</select>
+	
+	
+	
+	<!--  // 6. 게시물 등록
+	public void insertKP(KNOWHOW_POST ins); -->
+	
+	<insert id="insertKP" parameterType="KP">
+		insert into KNOWHOW_POST values(
+			#{KP_ID}, #{KP_TITLE}, #{KP_CONTENT},0, sysdate, #{KP_USER}
+		)
+	
+	</insert>
+	
+	
+	<!--  // 7. 게시물 삭제
+	public void deleteKP(String id); -->
+	
+	
+	<delete id="deleteKP" parameterType="string">
+		delete from KNOWHOW_POST
+		where KP_ID = #{KP_ID}
+	
+	</delete>
+	
+	
+	<!--  // 8. 게시물 수정
+	public void updateKP(KNOWHOW_POST ins); 
+	수정되는 건 제목, 내용이다.	
+	
+	-->
+
+	<update id="updateKP" parameterType="KP">
+		update KNOWHOW_POST
+			set KP_TITLE = #{KP_TITLE},  
+				KP_CONTENT = #{KP_CONTENT}
+
+			where KP_ID = #{KP_ID}  <!-- 이 부분이 좀 자신없네... property 인식하나? -->
+	
+	</update>
+	
+	<!-- 16. 조회수 증가 -->
+	<update id="addKPView" parameterType="string">
+		update knowhow_post
+			set KP_VIEW = KP_VIEW+1
+			where KP_ID = #{KP_ID}
+	
+	</update>
+	
+
+
+</mapper>
+
+
+
+

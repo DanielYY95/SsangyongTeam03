@@ -143,10 +143,18 @@ public class PP_Controller {
 	}
 	
 	
+	@GetMapping("/pp_insert.do")
+	public String insertPP() {
+		
+		
+		
+		return "insert_mypage//insert_pics";
+	}
 	
-	// html로 만들어주기만 하면됨.
 	
+
 	
+
 	
 	// 생각해보니 table명과 약어도 그냥 여기서 해도 되겠는데?
 	// => 	

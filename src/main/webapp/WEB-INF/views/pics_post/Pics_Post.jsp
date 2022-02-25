@@ -43,9 +43,7 @@
 <body >
       <jsp:include page="../head_foot/new_header.jsp" flush="true"/>
       
-      <% session.setAttribute("User", "asd456"); // 로그인한 아이디
-
-      %>
+      
 
     <div id="Post_Container" >
         <div>제목: ${post.ppTitle}</div>
@@ -57,7 +55,7 @@
             </div>
         </div><hr><br>
 
-        <img class="Post_Img" style="height: 400px; object-fit:cover;" src="${path}${post.ppPhoto}"><br>
+        <img class="Post_Img" style="height: 700px; object-fit:cover;" src="${path}${post.ppPhoto}"><br>
 
         <div>내용: ${post.ppContent}</div><br>
 
@@ -192,7 +190,7 @@
         // 일부데이터만 다시 가져오는 것이기에 속도면에서 긍정적일 것.
 
 		let id = "${ppId}";
-        let user = "${User}";
+        let user = "${members.mId}";
       	let hasLike = "${hasLike}";
         
         
@@ -229,10 +227,10 @@
 					hasLike = data.hasLike; // 만약에 제가 등록했다고 기록이 있으면
 				    
 				    // 이 녀석을 ajax 바깥에다가 두면 ajax가 처리되는 동안 이 녀석이 먼저 처리되서..
-					 if(hasLike==1){ // 왜 0일떄지..?
+					 if(hasLike==1){ 
 			            	$("#likeBtn").css("color","red"); 
-			            	// vue 활용할 것 
-			            	// :class="[조건? 'ture일 경우 class' : 'false일 경우 class']"        
+			            	// vue 고민 
+			            	// :class="[조건? 'true일 경우 class' : 'false일 경우 class']"        
 		            }else{
 		            	$("#likeBtn").css("color","black"); 
 		            }

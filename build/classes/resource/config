@@ -1,7 +1,7 @@
 # db 정보
 
 driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@localhost:1521:xe
+url=jdbc:oracle:thin:@//14.33.134.85:1521/xe
 user=scott
 pass=tiger
 

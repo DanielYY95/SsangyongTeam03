@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+     integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" 
+     crossorigin="anonymous" 
+     referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" 
+     integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" 
+     crossorigin="anonymous" 
+     referrerpolicy="no-referrer"></script>
+  
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap');
+        </style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+   <!-- 부트스트랩 css -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+   <!-- 부트스트랩 js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+   <!-- login css -->
+    <link rel="stylesheet" href="./css/login.css">
+   <!-- header css -->
+    <link rel="stylesheet" href="./css/header.css">
+
+    <title>동네사진작가 </title>
+</head>
+
+
+<body>
+     <!-- header  -->
+     <header>
+        <div class="inner">
+            <div class="logo">
+            <a href="/">
+                <i class="fas fa-camera-retro" style="font-size: 70px" ></i>
+            </a>
+            <h2>동네사진작가</h2></div>
+            
+            
+            <div class="sub-menu">
+                <div class="search">
+                    <input type="text">
+                    <div class="material-icons">
+                      <a href="https://www.naver.com/">search</a>  
+                    </div>
+                </div>
+                <ul class="menu">
+                <li>
+                    <a href="./login.html">로그인</a>
+                </li>
+                <li>
+                    <a href="./regcheck.html">회원가입</a>
+                </li><li>
+                    <a href="javascript:void(0)">마이페이지</a>
+                </li>
+                </ul>
+                  
+               
+            </div>
+            <ul class="main-menu">
+                <li class="item">  
+                    <div class="item__name">
+                        <a href="/">홈</a> </div>
+                    <div class="item__name">
+                        <a href="/">동네작가사진</a> </div>
+                    <div class="item__name">
+                        <a href="/">전문가사진</a> </div>
+                    <div class="item__name">
+                        <a href="/">노하우</a> </div>
+                    <div class="item__name">
+                        <a href="/">만남의광장</a> </div>
+                    <div class="item__name">
+                        <a href="/">공모전</a> </div>
+                    <div class="item__name">
+                        <a href="/">스카웃후기</a> </div>
+                </li>
+            </ul>
+            </div>
+     </header>
+      <!------------------------------   내 작업 영역  ------------------------------>
+
+     <!-- 김효은 로그인 화면 1 -->
+<div class="container">
+        <div class="logbox">
+        <div class="log1">
+                <h1 class="logtext1">동네 사진작가로 <br>데뷔하세요!</h1>
+                <p class="logtext2">진솔한 작품으로 당신의 이야기를<br>세상에 선보이세요.</p>
+                <!-- <p style="font-size:20px; color:black;">동네 사진작가로 데뷔하세요!</p>
+                <p style="font-size:14px;">진솔한 사진으로 당신의 이야기를 <br> 세상에 선보이세요.</p> -->
+        </div>
+      <!-- 김효은 로그인 화면 2 -->
+      <div class="log2">
+      <form class="signin">
+        <input type="text" class="userlog" name="id" placeholder="user id">
+        <input type="text" class="userlog" name="pw" placeholder="password">
+        <input type="submit" class="btn" value="로그인">
+        <p class="regbtn" href="https://www.naver.com/">
+        <i class="fas fa-arrow-right" style="color:rgb(63, 58, 58);"></i>
+       아직 가입 전이신가요?
+      </p>
+      </form>
+    </div>
+    </div>
+</div>
+</body>
+</html>

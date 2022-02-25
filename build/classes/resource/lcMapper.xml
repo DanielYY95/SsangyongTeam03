@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.LP_Dao">
+		<!--  // 9. 댓글 불러오기
+	// 게시물의 고유번호가 매개변수가 되어야한다.
+	-->
+	<select id="getLPComment" parameterType="string" resultType="lc">
+		select * from local_comment
+		where lp_id = #{lp_id}
+	
+	</select>
+	
+	<!--  // 10. 댓글 등록 -->
+	<insert id="insertLPComment" parameterType="lc">
+		insert into local_comment values(
+			#{LC_ID},#{LC_USER}, #{LC_CONTENT},sysdate, #{LP_ID})
+	
+	</insert>
+
+	<!--  // 11. 댓글 삭제 -->
+	<delete id="deleteLPComment" parameterType="string">
+		delete from local_comment 
+		where lc_id = #{lc_id}
+	
+	</delete>
+
+	<!-- 17. 댓글 수 불러오기 -->
+	<select id="getLPCommentCnt" parameterType="string" resultType="int" >
+		select count(*) from local_comment 
+		where lp_id = #{lp_id}
+	
+	</select>
+	
+	
+</mapper>
+
+
+
+

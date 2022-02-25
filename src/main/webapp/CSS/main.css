@@ -1,0 +1,273 @@
+#main-container{
+    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    /* 줄 높이 */
+    line-height: 1.4;
+   /* font-family: 'Nanum Myeongjo', serif; */
+    font-family: 'Roboto';
+    font-weight: 300;
+    /*  #f6f5f0*/
+    background-color: #f7f7f7;
+    margin: auto;
+}
+
+#main-container img{
+    display: block;
+    width:300px;
+    height:300px;
+    max-width: 100%;
+}
+#main-container h2{
+    display: block;
+    padding-left: 20px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    font-size: 30px;
+    font-family: 'Gugi', cursive;
+    text-align: center;
+   /* font-family: 'Song Myung', serif; */
+}
+#main-container i {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+}
+#main-container a{ 
+    text-decoration: none; 
+    color: #333; 
+}
+#main-container p {
+    padding-top: 10px;
+    padding-left:10px;
+    font-size: 15px;
+    text-decoration: none; 
+}
+
+header hr{
+	
+	margin-bottom: 0;
+}
+
+
+.wtitle {
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* VISUAL (메인 중심부) */ 
+.visual{
+    background-image: url("../img/visual_bg.jpg");
+    background-position: center;
+    border-bottom: 1px solid #c8c8c8; 
+    position: relative;
+    display:flex; 
+    justify-content:center;
+}
+.visual .inner{
+   height: 480px;
+}
+.visual .inner .ul{
+    display: flex;
+    position: absolute;
+    
+}
+.text{
+    display: flex;
+    position: relative;
+    padding-left: 130px;
+    background-color:green;
+}
+.text .text1{
+    font-size: 50px;
+    position: absolute;
+    top:140px;
+    bottom: 30px;
+    font-weight: 200;
+    list-style:none;
+    
+}
+.text .text2{
+    font-size: 25px;
+    position: absolute;
+    top: 220px;
+    bottom: 30px;
+    line-height: 38px;
+    list-style:none;
+    font-weight: 200;
+    
+}
+/* 메인 중심부 슬라이드 구현 css*/
+#slideShow{
+    width: 400px;
+    height: 600px;
+    position: relative;
+    /* list 형식으로 정렬하기 위해, 500px 밖으로 오버플로우된 이미지들은 hidden으로 숨기기*/
+    overflow: hidden;
+    margin-top: 80px;
+    margin-left: 750px;
+    padding-right: 80px;
+    padding-bottom: 80px;
+}
+.slides{
+    position: absolute;
+    top: 20px;
+    width: 2400px;
+    transition: left .5s ease-out;
+}
+.slides li:first-child{
+    /* 첫번째 슬라이드 가운데정렬 위해, margin-left 조정 */
+    margin-left: 10px;
+}
+
+.slides li{
+    float: left;
+    margin-left: 50px;
+    margin-right: 50px;
+    list-style:none;
+}
+
+.controller span{
+    position: absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: 130px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.controller span:hover{
+    background-color: rgba(128, 128, 128, 0.19);
+}
+.prev{ 
+    left: 10px; 
+} /* 이전 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 왼쪽으로 이동하는 효과*/ 
+.prev:hover{ 
+    transform: translateX(-10px); 
+} 
+.next{ 
+    right: 10px; 
+} /* 다음 화살표에 마우스 커서가 올라가 있을때 이전 화살표가 살짝 오른쪽으로 이동하는 효과*/ 
+.next:hover{ 
+    transform: translateX(10px); 
+}
+
+
+/* 동네작가 사진 리스트 */
+.photolist{
+    display: block;
+    width: auto;
+    height: auto;
+}
+
+.slide1{
+    display: block;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom:40px;
+     width: auto;
+    height: auto;
+    /* border-bottom: 1px solid #c8c8c8; */
+}
+.slide1 li{
+    padding-right: 40px;
+    cursor: pointer;
+     width: auto;
+    height: auto;
+     list-style:none;
+}
+
+.slide1-container{
+	text-align: center;
+}
+
+
+.banner{
+    margin-top: 40px;
+    border-bottom: 1px solid #c8c8c8;
+    border-top: 1px solid #c8c8c8;
+    width: auto;
+    height: 150px;
+    background-color:rgb(233, 233, 233);
+    font-family: 'Nanum Myeongjo', serif;
+    position: relative;
+    text-align: center;
+   
+}
+.bannertext{
+    font-size: 28px;
+    width: auto;
+    padding-top: 50px;
+    font-family: 'Nanum Myeongjo', serif;
+}
+.bannertext2{
+    font-size: 20px;
+    width: auto;
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+
+
+/* 전문작가 사진 리스트 */
+.slide2{
+    display: block;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #c8c8c8;
+}
+.slide2 li{
+    padding-right: 40px;
+    cursor: pointer;
+     list-style:none;
+}
+
+.slide2-container{
+	text-align: center;
+}
+
+
+/* 인터뷰 존 */
+.interview{
+    display: block;
+    width: auto;
+    height: auto;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-bottom:30px;
+    display: flex;
+    justify-content: center;
+ 
+}
+.imgclick{
+    text-align: center;
+    padding-top: 5px;
+    font-size: 15px;
+}
+.proInter{
+    display: block;
+    padding-bottom: 30px;
+    padding-left: 80px;
+}
+.protext1{
+    padding-bottom: 20px;
+    font-weight: 400;
+    font-size: 25px;
+    list-style:none;
+}
+.protext2{
+    width: 500px;
+    text-overflow: clip;
+    display: flex;
+    font-size:18px;
+    font-weight: 200;
+  
+
+}

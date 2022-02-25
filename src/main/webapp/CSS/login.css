@@ -1,6 +1,13 @@
+footer{
+	position: absolute;
+	bottom: 0;	
+
+} /* 임시 방편.... */
+
+
 .container {
-    width: 800px;
-	height: 500px;
+    width: 1000px;
+	height: 600px;
     position: relative;
     box-shadow: 2px 10px 40px rgba(22, 20, 19, 0.4);
     border-radius: 10px;
@@ -20,14 +27,14 @@
 
 .log1{
     background-image:url('https://i.pinimg.com/736x/b8/09/22/b80922f6ea2daaf36a6627378662803b--deck-of-cards-phone-wallpapers.jpg');
-    background-size:300px 400px;
+    background-size:360px 450px;
     background-repeat: no-repeat;
     background-color:white;
-    width:300px;
-    height:400px;
+    width:360px;
+    height:450px;
     display:inline-block;
     position:absolute;
-	margin-left:50%;
+	margin-left:30%;
     border-radius:10px 10px 15px 15px;
  }
 .logtext1{
@@ -46,18 +53,23 @@
  }
  .log2{
     background-color:white;
-    width:300px;
-    height:400px;
+   width:360px;
+    height:450px;
     border-radius:15px;
     position:absolute;
     margin-left:140%;
     display:inline-block;
  }
+ 
+.signin{
+	margin-top: 60px;
+	text-align:center;
+} 
+ 
  .userlog{
     font-weight: bold;
-    margin-top:30px;
-    margin-left: 60px;
-    margin-bottom: 0px;
+   	margin-top: 30px;
+   	width: 250px;
     height: 35px;
     border-radius: 5px;
     outline: none;
@@ -68,17 +80,15 @@
  }
 
  .btn1{
-           width: 200px;
-            height: 40px;
-            border-radius: 5px;
-            outline: none;
-            border: none;
-            background:#3c3c3c;
-            color: white;
-            font-size: 12px;
-           margin-top:40px;
-           margin-left:50px;
-           margin-bottom:30px;
+     width: 200px;
+      height: 40px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      background:#3c3c3c;
+      color: white;
+      font-size: 1rem;
+     margin:40px 0px;
      }
  .regbtn{
    padding-left: 20px;

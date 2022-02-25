@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.LP_Dao">
+	
+	<!--  // 12. 좋아요 수 불러오기 -->	
+	<select id="getLPLikeCnt" parameterType="string" resultType="int">
+		select count(*) from LOCAL_LIKE
+		where LP_ID = #{LP_ID}
+	
+	</select>
+	
+	
+	<!--  // 13. 좋아요 등록 -->
+	
+	<insert id="insertLPLike" parameterType="ll" >
+		insert into LOCAL_LIKE values(
+			#{LL_ID}, #{LL_USER}, #{LP_ID}
+		)
+	
+	</insert>
+	
+	
+	
+	<!--  // 14. 좋아요 등록여부 체크 -->
+	<select id="hasLPLike" parameterType="string" resultType="boolean">
+		select count(*) from LOCAL_LIKE
+		where LP_ID = #{LP_ID}
+		AND LL_USER = #{LL_USER}
+		
+	</select>
+	
+	
+	
+	<!--  // 15. 좋아요 삭제 -->
+	<delete id="deleteLPLike" parameterType="string"> <!-- 매개변수가 2개이긴하나, 둘 다 String이고, 같은 VO객체 멤버변수라 괜춘  -->
+		delete from LOCAL_LIKE
+		where LP_ID = #{LP_ID}
+		AND LL_USER = #{LL_USER}
+	
+	</delete>
+	
+	
+</mapper>
+
+
+
+

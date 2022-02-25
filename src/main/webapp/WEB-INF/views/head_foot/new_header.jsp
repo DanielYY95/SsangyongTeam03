@@ -52,24 +52,26 @@
 		
 		html{
 		    font-size: 16px;
+		    
 		}
 		
 		/*
 		    특정 태그
 		
 		*/
-		
-		
+	
 		#header{ 
 		    padding: 0;
 		    margin: 0;
 		    font-family: 'Nanum Myeongjo', serif;
 		    background-color:#f7f7f7;
+		    
 		}
 		
 		#header a{
 		    text-decoration: none;
 		    color: black;
+		    font-size: 1.2rem;
 		}
 		
 		#header li{
@@ -115,6 +117,7 @@
 		
 		#header .sub-menu{
 		    align-items: center;
+		    margin-right: 3%;
 		}
 		
 		
@@ -122,6 +125,7 @@
 		
 		#header .menu{
 		    font-size: 1.5rem;
+		    margin: 0;
 		    
 		}
 		
@@ -165,12 +169,19 @@
 
     <!-- class="col" 을 하면 다 하나의 열로 배치된다.-->
 
-    <!-- header <i class="fas fa-camera-retro"></i>  -->
+    <!-- 여기서 멤버 세션에 따라 이 페이지에서 사용할 값을 분류 -->
+    <c:set var="loginOutLink" value="${members.mId==null? '/loginFrm.do':'/logout.do'}" />
+	<c:set var="loginOut" value="${members.mId==null? '로그인':'로그아웃' }" />
+	
+	<c:set var="regMypageLink" value="${members.mId==null? '/reg.do':'/mypage_pics.do'}" />
+	<c:set var="regMypage" value="${members.mId==null? '회원가입':'마이페이지' }" />
+						
+    
     
     <div id="header">
         <div class="inner">
             <div class="logo">
-                <a href="/">
+                <a href="${path}/main.do">
                     <i class="fas fa-camera-retro" style="font-size: 7rem;"></i>
                 </a>
                 <h2>동네사진작가</h2>
@@ -189,22 +200,30 @@
                 </div>
                 
                 <div class="user">
+   					<!-- 로그인 중입니다.  -->
+   					 <c:if test="${not empty members.mId}">
+	   					<div style="position:absolute; top: 20px; font-size: 1.3rem;">
+	   						안녕하세요, <span style="font-weight: 900">${members.mNick}</span>님
+	   					</div>
+   					</c:if>
+   					
                     <ul class="menu">
+                    
+                   
+                    	
+              		<!-- 로그인, 회원가입 // 로그아웃, 마이페이지 -->
+                       <li>
+                       		<a href="${path}${loginOutLink}">${loginOut}</a>
+                       </li>|
                         <li>
-                            <a href="/signin">로그인</a>
-                        </li>|
-                        <li>
-                            <a href="./regcheck.html">회원가입</a>
-                        </li>|
-                        <li>
-                            <a href="javascript:void(0)">마이페이지</a>
-                        </li>
+                        	<a href="${path}${regMypageLink}">${regMypage}</a>
+                       	</li>
                     </ul>
 
                 </div>
             </div>
 
-        </div><br>
+        </div>
 
 
         <div class="item">
@@ -221,51 +240,16 @@
                 <a href="/">만남의광장</a>
             </div>
             <div>
-                <a href="/">공모전</a>
+                <a href="${path}/contest.do?method=list">공모전</a>
             </div>
             <div>
-                <a href="/">스카웃후기</a>
+                <a href="${path}/scout.do">스카웃후기</a>
             </div>
         </div>
         <hr>
     
     
     </div>
-
-
-
-    <script>
-        // 데스크탑 환경에서는 가린다.
-        $("document").ready(function () { 
-
-            showhide();// 처음에는 가린 상태
-
-            $(window).resize(function() { // 창 크기 조절 시에도 적용
-               showhide();
-            })
-        })
-
-        function showhide(){ //모바일, 테블릿 환경에서는 보이게. 데스크탑에서는 숨김.
-            if($(window).width() > 992) {   
-                    $(".m_menu").hide();
-            }else{
-                $(".m_menu").show();
-            }
-        }
-
-        function bflogin(){ // 세션값으로 유저 객체가 없다면
-            $(".aflogin").hide();
-            $(".bflogin").show();
-        }
-        
-        function aflogin(){ // 세션값으로 유저 객체가 있다면
-            $(".bflogin").hide();
-            $(".aflogin").show();
-        }
-
-
-    </script>
-
 
 
 </body>
