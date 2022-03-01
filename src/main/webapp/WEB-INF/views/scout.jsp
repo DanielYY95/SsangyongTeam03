@@ -25,7 +25,6 @@
      referrerpolicy="no-referrer"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap');
-
     </style>
     <link
     rel="stylesheet"
@@ -41,88 +40,88 @@ var pagingList = [];
 
 var htmlStr = "";
 for(var i=1 ; i <=pageCnt; i++){
-	htmlStr += '<li><a style="font-size:1.5rem; color: black; text-decoration: none;" href="scout.do?startPage='+i+'">'+i+'</a></li>'
+  htmlStr += '<li><a style="font-size:1.5rem; color: black; text-decoration: none;" href="scout.do?startPage='+i+'">'+i+'</a></li>'
 };
 
 
 $(document).ready(function() {
-	$("#pagingList").html(htmlStr);
+  $("#pagingList").html(htmlStr);
 })
 
 </script>
 <body>
-	<head>
-     	<jsp:include page="new_header.jsp" flush="true"/>
+  <head>
+       <jsp:include page="new_header.jsp" flush="true"/>
     </head>
-	<div class="meet-container" style="min-height:840px;">
-		<div class="center">
-			<p>스카웃 후기</p>
-			<div class="row">
-				<div class="mt_content">
-			   	    <table class="table-list-search">
-			   	   		 <colgroup>
-							<col style="width:10%">
-							<col style="width:20%">
-							<col style="width:40%">
-							<col style="width:20%">
-							<col style="width:10%">
-						</colgroup>
-			            <thead>
-	                   		<tr>
-		                       <th>No</th>
-		                       <th>author</th>
-		                       <th>Title</th>
-		                       <th>Date</th>
-		                       <th>views</th>
-		                	</tr>
-			            </thead>
-			            <tbody>
-			            	<c:forEach var="scout" varStatus="status" items="${ScoutList}">
-			                    <tr>
-			                       <td>${status.count}</td>
-			                       <td>${scout.spUser}</td>
-			                       <td>${scout.spTitle}</td>
-			                       <td>${scout.spDate}</td>
-			                       <td>${scout.spView}</td>
-			                    </tr>
-		                    </c:forEach>
-			             </tbody>
-					</table>
-				</div>
-				<div class="mt_foot">
-					<form action="#" method="get">
-						<div class="input-group">
-							<div class="in-filter-block">
-								<span class="filter">
-									<input class="form-btn" type="button" value="최근 순"> |
-									<input class="form-btn" type="button" value="조회 순"> |
-									<input class="form-btn" type="button" value="베스트 순">
-								</span>
-							</div>
-							<div class="serch-box">
-								<div class="serch">
-									<div class="btn_input">
-										<select>
-											<option>제목</option>
-											<option>작성자</option>
-										</select>
-										<input type="text" id="input_keyword">
-										<i class="fas fa-search" onclick="search();"></i>
-									</div>
-								</div>
-							</div>
-							<div class="out-paging">
-								<div class="in-paging">
-									<ul id="pagingList" class="page">
-						           </ul>
-					           </div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<jsp:include page="footer.jsp" flush="true"/>
+  <div class="meet-container" style="min-height:840px;">
+    <div class="center">
+      <p>스카웃 후기</p>
+      <div class="row">
+        <div class="mt_content">
+               <table class="table-list-search">
+                   <colgroup>
+              <col style="width:10%">
+              <col style="width:20%">
+              <col style="width:40%">
+              <col style="width:20%">
+              <col style="width:10%">
+            </colgroup>
+                  <thead>
+                         <tr>
+                           <th>No</th>
+                           <th>author</th>
+                           <th>Title</th>
+                           <th>Date</th>
+                           <th>views</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <c:forEach var="scout" varStatus="status" items="${ScoutList}">
+                          <tr>
+                             <td>${status.count}</td>
+                             <td>${scout.spUser}</td>
+                             <td>${scout.spTitle}</td>
+                             <td>${scout.spDate}</td>
+                             <td>${scout.spView}</td>
+                          </tr>
+                        </c:forEach>
+                   </tbody>
+          </table>
+        </div>
+        <div class="mt_foot">
+          <form action="#" method="get">
+            <div class="input-group">
+              <div class="in-filter-block">
+                <span class="filter">
+                  <input class="form-btn" type="button" value="최근 순"> |
+                  <input class="form-btn" type="button" value="조회 순"> |
+                  <input class="form-btn" type="button" value="베스트 순">
+                </span>
+              </div>
+              <div class="serch-box">
+                <div class="serch">
+                  <div class="btn_input">
+                    <select>
+                      <option>제목</option>
+                      <option>작성자</option>
+                    </select>
+                    <input type="text" id="input_keyword">
+                    <i class="fas fa-search" onclick="search();"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="out-paging">
+                <div class="in-paging">
+                	<ul id="pagingList" class="page">
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

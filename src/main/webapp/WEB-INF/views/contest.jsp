@@ -27,7 +27,23 @@ referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
+<script>
+var recordTotal = "${recordTotal}" ; // tatalcnt
+var recordCount = "${recordCount}" ; // 10page
+var pageCnt = recordTotal / recordCount; // paging cnt
+var pageRest = recordTotal % recordCount; // last page cnt
+if(pageRest > 0 ) pageCnt+=1 ;
+var pagingList = [];
+
+var htmlStr = "";
+for(var i=1 ; i <=pageCnt; i++){
+  htmlStr += '<li><a style="font-size:1.5rem; color: black; text-decoration: none;" href="scout.do?startPage='+i+'">'+i+'</a></li>'
+};
+
+
+$(document).ready(function() {
+  $("#pagingList").html(htmlStr);
+})
 
 </script>
 </head>
@@ -36,24 +52,23 @@ referrerpolicy="no-referrer"></script>
 	<div class="gall-content">
 		<p class="galltitle">공모전</p>
 		<ul class="gallery">
-
+		<c:forEach var="contest" items="${ContestList}">
 			<li>
 				<a href="#" data-toggle="modal" data-target="#contestModal">
 					<span>
-						<img class="in-img" src="${path}/./img/img.jpg"/>
+						<img class="in-img" src="${path}${contest.ctPreviewPhoto}"/>
 					</span>
 					<span>
 						<ul>
-							<li class="con-title">제목</li>
-							<li class="con-startdate">등록일</li>
-							<li class="con-enddate">마감일</li>
+							<li class="con-title">${contest.ctTitle}</li>
+							<li class="con-startdate">${contest.ctRegDate}</li>
+							<li class="con-enddate">${contest.ctCloseDate}</li>
 						</ul>
 					</span>
 				</a>
 			</li>
 		</ul>
 	</div>
-	<jsp:include page="footer.jsp" flush="true"/>
 	<div class="modal fade" id="contestModal" tabindex="-1" role="dialog" aria-labelledby="contestModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content-sm">
@@ -66,9 +81,15 @@ referrerpolicy="no-referrer"></script>
 		<form id="frm02" class="form"  method="post">
 	     <div class="row">
 	      <div class="col">
-	      		<img src="${path}/./img/img.jpg"/>
+	      		<img src="${path}${contest.ctPopupContent}"/>
 	      </div>
 	     </div>
+	     <div class="out-paging">
+                <div class="in-paging">
+                	<ul id="pagingList" class="page">
+                    </ul>
+                </div>
+              </div>
 	    </form>
       </div>
       <div class="modal-footer" style="border-top: none;">
@@ -76,6 +97,8 @@ referrerpolicy="no-referrer"></script>
       </div>
     </div>
   </div>
+    </c:forEach>
 </div>
+<jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

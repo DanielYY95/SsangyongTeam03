@@ -1,13 +1,14 @@
 package springweb.Repository;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
 
 import springweb.vo.Contest;
+import springweb.vo.PageMaker;
 
 @Repository
 public interface ContestDao {
-	public List<Contest> getContestList(Contest sch);
-
+	public ArrayList<Contest> getContestList(PageMaker pm);
+	public int getContestListTotal(PageMaker pm);
 }

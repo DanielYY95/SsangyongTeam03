@@ -46,6 +46,7 @@ CREATE TABLE Contest (
    CT_REG_DATE   date,
    CT_CLOSE_DATE   date
 );
+INERT INTO contest(CT_ID,CT_TITLE,CT_PREVIEW_PHOTO,CT_POPUP_CONTENT,CT_REG_DATE,CT_CLOSE_DATE) values('ct00001','테스트1','/img/img.jpg','/img/img.jpg',to_date(sysdate,'yyyy/dd/mm'),to_date(to_char(sysdate+7),'yyyy/dd/mm'));
 --- ### 만남의 광장
 CREATE TABLE Meet_Post (
    MP_ID   varchar2(20) PRIMARY KEY,
@@ -139,7 +140,6 @@ CREATE TABLE Local_Comment (
    LC_USER   varchar2(20),
    LP_ID varchar2(20)  REFERENCES LOCAL_Pics(LP_ID)
 );
-
 
 CREATE TABLE Local_Like (
    LL_ID   varchar2(20) PRIMARY KEY,
