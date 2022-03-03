@@ -9,10 +9,15 @@
 		<typeAlias alias="sp" type="springweb.vo.Scout_Post"/>
 		<typeAlias alias="ct" type="springweb.vo.Contest"/>
 		<typeAlias alias="pm" type="springweb.vo.PageMaker"/>
+		<typeAlias alias="mp" type="springweb.vo.Meet_Post"/>
+		<typeAlias alias="kh" type="springweb.vo.Knowhow_Post"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/spMapper.xml"/>
 		<mapper resource="resource/ctMapper.xml"/>
+		<mapper resource="resource/mpMapper.xml"/>
+		<mapper resource="resource/mpMapper.xml"/>
+		<mapper resource="resource/khMapper.xml"/>
 	</mappers>
 
 </configuration>

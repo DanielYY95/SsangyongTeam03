@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="springweb.Repository.KnowhowDao">
+	<select id="getKnowhowList" parameterType="pm" resultType="kh">
+		select * from (
+			select rownum num, kh.* from(
+				select * from knowhow_post order by kp_date desc
+			) kh
+		)
+		where num between #{startPage} and #{endPage}
+	</select>
+	<select id="getKnowhowListTotal" resultType="int">
+		select count(*) from knowhow_post
+	</select>
+</mapper>

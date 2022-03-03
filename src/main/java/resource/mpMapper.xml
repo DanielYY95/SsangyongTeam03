@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="springweb.Repository.MeetDao">
+	<select id="getMeetList" parameterType="pm" resultType="mp">
+		select * from (
+			select rownum num, mp.* from(
+				select * from meet_post order by mp_date desc
+			) mp
+		)
+		where num between #{startPage} and #{endPage}
+	</select>
+	<select id="getMeetListTotal" resultType="int">
+		select count(*) from meet_post
+	</select>
+</mapper>

@@ -51,7 +51,7 @@ INERT INTO contest(CT_ID,CT_TITLE,CT_PREVIEW_PHOTO,CT_POPUP_CONTENT,CT_REG_DATE,
 CREATE TABLE Meet_Post (
    MP_ID   varchar2(20) PRIMARY KEY,
    MP_TITLE   varchar2(100),
-   MP_CONTENT   long,
+   MP_CONTENT   varchar2(4000),
    MP_VIEW   number,
    MP_DATE   date,
    MP_USER   REFERENCES MEMBERS(M_ID)
@@ -99,7 +99,7 @@ CREATE TABLE Scout_Like (
 CREATE TABLE Knowhow_Post (
    KP_ID   varchar2(20) PRIMARY KEY,
    KP_TITLE   varchar2(100),
-   KP_CONTENT   LONG,
+   KP_CONTENT   varchar2(4000),
    KP_VIEW   number,
    KP_DATE   date,
    KP_USER varchar2(20) REFERENCES MEMBERS(M_ID)
@@ -187,6 +187,29 @@ CREATE TABLE Pro_Like (
   INSERT INTO SCOUT_POST (sp_id,SP_TITLE,SP_CONTENT,SP_VIEW,SP_DATE,SP_USER) values('sp00010','테스트10','테스트입니다',0,sysdate,'himan');
   INSERT INTO SCOUT_POST (sp_id,SP_TITLE,SP_CONTENT,SP_VIEW,SP_DATE,SP_USER) values('sp00011','테스트11','테스트입니다',0,sysdate,'himan');
 
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00001','테스트1','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00002','테스트2','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00003','테스트3','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00004','테스트4','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00005','테스트5','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00006','테스트6','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00007','테스트7','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00008','테스트8','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00009','테스트9','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00010','테스트10','테스트입니다',0,sysdate,'himan');
+  INSERT INTO meet_POST (mp_id,mp_TITLE,mp_CONTENT,mp_VIEW,mp_DATE,mp_USER) values('sp00011','테스트11','테스트입니다',0,sysdate,'himan');
+
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00001','테스트1','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00002','테스트2','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00003','테스트3','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00004','테스트4','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00005','테스트5','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00006','테스트6','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00007','테스트7','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00008','테스트8','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00009','테스트9','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00010','테스트10','테스트입니다',0,sysdate,'himan');
+  INSERT INTO knowhow_POST (kp_id,kP_TITLE,kP_CONTENT,kP_VIEW,kP_DATE,kP_USER) values('sp00011','테스트11','테스트입니다',0,sysdate,'himan');
 
 select * from (
 	select rownum num, sc.* from(

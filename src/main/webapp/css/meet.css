@@ -30,14 +30,14 @@ select{
 	border-radius: 10pt;
 	box-shadow: 0 0 0 0.3pt #808080;
 	outline: none;
-	width:70px;
+	width:85px;
 	font-size:13px;
 	font-weight:bold;
 	height:30px;
 	padding-left:8px;
 }
 
-.mt_foot{
+.col-md-3{
  	margin-top:1%;
 }
 .btn_input:focus, #input_keyword, #input_keyword:focus{
@@ -46,14 +46,15 @@ select{
     border-radius: 10pt;
     box-shadow: 0 0 0 0.3pt #808080;
     outline: none;
-    width: 209px;
+    width: 285px;
     font-size: 13px;
     height: 30px;
     padding-left:12px;
 }
 .serch-box{
-    width: 80%;
-    margin: auto;
+    width: 50%;
+    margin-top: -1%;
+    padding-left: 11%;
 }
 .serch{
 	position: relative;
@@ -64,8 +65,8 @@ select{
 	position:absolute;
     font-size: 20px;
     color: #2358a5;
-    left: 242px;
-    bottom:-25px;
+    left: 345px;
+    bottom:4px;
     cursor:pointer;
 }
 .row{
@@ -78,8 +79,9 @@ select{
 	text-align:center;
 }
 .in-filter-block{
-	float: right;
-    padding-right: 10%;
+	width:88%;
+	margin-top: 0.5%;
+	text-align:right;
 }
 ul, ul li{
 	list-style:none;
