@@ -13,6 +13,7 @@
 	<select id="getPPComment" parameterType="string" resultType="pc" >
 		select * from pro_comment
 		where pp_id = #{ppId}
+		order by pc_date desc
 	
 	</select>
 	

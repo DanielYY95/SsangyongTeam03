@@ -17,12 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap');
-    </style>
-    
   
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!-- jquery 라이브러리 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script> <!-- 부트스트랩 JS CDN -->
@@ -40,7 +35,8 @@
     <title>동네사진작가 </title>
     
     <style>
-    
+    	@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap');
+    	
 		    	
 		/*
 		    일반 태그
@@ -173,8 +169,9 @@
     <c:set var="loginOutLink" value="${members.mId==null? '/loginFrm.do':'/logout.do'}" />
 	<c:set var="loginOut" value="${members.mId==null? '로그인':'로그아웃' }" />
 	
-	<c:set var="regMypageLink" value="${members.mId==null? '/reg.do':'/mypage_pics.do'}" />
+	<c:set var="regMypageLink" value="${members.mId==null? '/reg.do':'/mypage_pics.do?user='}" />
 	<c:set var="regMypage" value="${members.mId==null? '회원가입':'마이페이지' }" />
+	<c:set var="user" value="${members.mId==null? '':members.mId }" />
 						
     
     
@@ -216,7 +213,7 @@
                        		<a href="${path}${loginOutLink}">${loginOut}</a>
                        </li>|
                         <li>
-                        	<a href="${path}${regMypageLink}">${regMypage}</a>
+                        	<a href="${path}${regMypageLink}${user}">${regMypage}</a>
                        	</li>
                     </ul>
 
@@ -234,10 +231,10 @@
                 <a href="${path}/pp_list.do">전문가사진</a>
             </div>
             <div>
-                <a href="/">노하우</a>
+                <a href="">노하우</a>
             </div>
             <div>
-                <a href="/">만남의광장</a>
+                <a href="">만남의광장</a>
             </div>
             <div>
                 <a href="${path}/contest.do?method=list">공모전</a>

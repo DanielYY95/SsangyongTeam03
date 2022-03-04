@@ -10,18 +10,7 @@
 			<head>
 				<meta charset="UTF-8">
 				<title>Insert title here</title>
-				<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css">
-				<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css">
-				<script src="${path}/a00_com/jquery.min.js"></script>
-				<script src="${path}/a00_com/popper.min.js"></script>
-				<script src="${path}/a00_com/bootstrap.min.js"></script>
-				<script src="${path}/a00_com/jquery-ui.js"></script>
-				<script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript"></script>
-				<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api"
-					type="text/javascript"></script>
 
-				<title>HTML5 BASIC(타이틀)</title>
-				<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 				
 				<style>
 				

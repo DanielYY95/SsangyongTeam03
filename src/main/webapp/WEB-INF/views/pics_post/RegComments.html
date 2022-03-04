@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!-- jquery 라이브러리 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script> <!-- 부트스트랩 JS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!-- 부트스트랩  CSS CDN -->
+
+
+    <style>
+        .mb-3{
+            width: 40%; 
+            margin: 0 auto;
+        } /* 기본적인 textarea에  너비만 줄이고 가운데로 정렬 */
+
+        #commentsBtn{
+            float: right;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+   
+
+
+    <div class="mb-3"> 
+        <label for="commentsText" class="form-label">댓글 내용</label>
+        <textarea id="commentsText" class="form-control" rows="3"></textarea>
+        <span class="commentsLength">0/50자</span>
+        <button id="commentsBtn" class="btn btn-primary">등록</button>
+
+    </div>
+
+
+
+
+
+    <script>
+        $("document").ready(function () { })
+
+        let length=0;
+        let ctext = $("#commentsText"); // 반복 사용하기때문에 변수 설정
+
+        ctext.keyup(function(){
+            length = ctext.val().length;
+            if(length>50){
+                alert("50자 이하로 작성하세요.");
+                ctext.val(ctext.val().substr(0,50)); // 50자까지만 남아있고, 그 뒤에는 삭제됨.
+                length=50;
+            }   
+            $(".commentsLength").text(length+"/50자"); // span에 글자 부여
+            
+        })
+
+    </script>
+</body>
+
+</html>

@@ -32,6 +32,14 @@
 <script>
 	let User = "${members.mId}";
 	
+	let msg = "${msg}"; // 새로 고침하면 다시 또 게시물 삭제했다고 뜨는 에러....
+	
+	if(msg!=""){
+		alert(msg);
+	}
+	
+	<% request.setAttribute("msg", ""); %>
+	
 	function goDetail(ppId){
 	
 		location.href="${path}/pp_post.do?ppId="+ppId+"&plUser="+User;
@@ -53,6 +61,11 @@
 		})
 		*/
 	}
+	
+	 $("document").ready(function () { 
+		$(".${comparator}").css({"font-weight": "700", "text-decoration": "underline"});
+
+     }) // 이렇게 하면 랜더링되고나서 좀 시간 걸리고나서 적용이 되는 문제...
 	
 
 </script>
@@ -87,10 +100,11 @@
 
 
             <div class="place_tag_filter">
-                <div><label style="padding-right: 10px;">지역명</label><input type="text" size="10"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg></button></div>
-
+            	<form action="${path}/pp_listP.do">
+	                <div><label style="padding-right: 10px;">지역명</label><input type="text" size="10" name="place"><button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+	                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+	                  </svg></button></div>
+				</form>
                 <div><label style="padding:0 10px;">태그</label><select name="" id="">
                         <option value="" selected>
                             전체 <svg class="icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"
@@ -112,11 +126,13 @@
 
             </div>
             <div class="view_filter">
-                <div><a href="#" class="mostDate" style="font-weight: 700; text-decoration: underline;">최근순</a></div>
+                <div><a href="#" class="mostDate">최근순</a></div>
                 <div><a href="#" class="mostView">조회순</a></div>
                 <div><a href="#" class="mostLike">베스트순</a></div>
 
-
+		<!-- 프로퍼티가 아니면 제대로 못 넘겨주는 듯.. -->
+		
+		
             </div>
         </div><br>
 
@@ -134,50 +150,55 @@
   
         -->
 		
+		<div id="PP_List_Container">
+			<div class="row">
+				<c:forEach var="pp" items="${pplist}">
+					<div class="card col-sm-6 col-lg-3 ">
+		                <!-- card 형태 -->
+		                <div style="display:flex; justify-content: space-between;">
+			                <div class="profile">
+			                    <!-- 프로필 사진과 닉네임 -->
+			                    <span></span>
+			                    <span>${pp.ppUser }</span> <!-- 어라..닉네임으로 해야하는데.... -->
+			                    
+			                </div>
+			        		<span style="float:right;"><fmt:formatDate pattern="yyyy-MM-dd" value="${pp.ppDate}"/></span>
+	                     </div>
+		             
+		                
+		                <a class="post" href="#">
+		                    <img src="${path}${pp.ppPhoto}" class="img-thumbnail card-img-top" 
+		                    alt="사진을 찾을 수 없음." onclick="goDetail('${pp.ppId}')">
+		                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
 		
-		<div class="row">
-			<c:forEach var="pp" items="${pplist}">
-				<div class="card col-sm-6 col-lg-3 ">
-	                <!-- card 형태 -->
-	                <div style="display:flex; justify-content: space-between;">
-		                <div class="profile">
-		                    <!-- 프로필 사진과 닉네임 -->
-		                    <span>프로필</span>
-		                    <span>${pp.ppUser }</span> <!-- 어라.... -->
-		                    
+		                </a>
+		                <div class="card-body">
+	               	     	<div><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(44, 33, 28)" class="bi bi-eye" viewBox="0 0 16 16">
+		                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+		                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+			                      </svg> ${pp.ppView}</span>
+			                     <span><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(220,20,60)" class="bi bi-heart-fill" viewBox="0 0 16 16">
+		                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+		      <!--  svg색깔 바꾸려면 fill 속성 이용 --> </svg> ${pp.ppLikecnt}</span> 
+	      					</div>
+		                	
+		                    <span style="display: block; text-align: center;" class="card-text" style="text-align:center;">${pp.ppTitle}</span>
 		                </div>
-		        		<span style="float:right;"><fmt:formatDate pattern="yyyy-MM-dd" value="${pp.ppDate}"/></span>
-                     </div>
-	             
-	                
-	                <a class="post" href="#">
-	                    <img src="${path}${pp.ppPhoto}" class="img-thumbnail card-img-top" 
-	                    alt="사진을 찾을 수 없음." onclick="goDetail('${pp.ppId}')">
-	                    <!-- 이미지에 둥근 1px 테두리 모양을 제공, card 이미지가 위로 -->
-	
-	                </a>
-	                <div class="card-body">
-               	     	<div><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-	                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-	                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-		                      </svg> ${pp.ppView}</span>
-		                     <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-	                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-	      <!--  pp.ppLikecnt} --> </svg></span>
-      					</div>
-	                	
-	                    <span style="display: block; text-align: center;" class="card-text" style="text-align:center;">${pp.ppTitle}</span>
-	                </div>
-	            </div>
-			
-			</c:forEach>
-		</div>
-			
-		 <!--  <img src="${path}/upload/sea.png" /> -->
-        </div><br><br>
+		            </div>
+				
+				</c:forEach>
+			</div>
+				
+			 <!--  <img src="${path}/upload/sea.png" /> -->
+	        </div><br><br>
+        </div>
         
-    	<button id="insertBtn" style="float:right;">등록</button>    
-	
+        
+    	<c:if test="${not empty members.mId}">
+			<button id="insertBtn" class="btn btn-primary" 
+				style="float:right; margin-right: 10%; 
+					padding: 10px 30px;">등록</button>    
+		</c:if>
         
         <div style="width: 80%; margin: 0 auto;">
             <ul class="pagination" style="width: 28%; margin: 0 auto;"> 
@@ -202,28 +223,31 @@
        
     
     	$("#insertBtn").click(function(){
-    		location.href="${path}/pp_insert.do"
+    		location.href="${path}/pp_insertFrm.do"
     	})
     
     
         // 정렬을 눌렀을때, 글자 css 변경 + 정렬 실행
         $(".view_filter a").click(function(){
         	
-        	$(".view_filter a").css({"font-weight": "300", "text-decoration": "none"});
-        	$(this).css({"font-weight": "700", "text-decoration": "underline"});
-        	
-            let comparator = $(this).attr("class");
+        	if($(this).css("font-weight")==700){
+        		return;
+        	} // 지금의 정렬기준을 또 누른다면 아무것도 발생하지않도록
 
-            alert(comparator+"정렬!");
-            getByFilter(comparator);
+            let comparator = $(this).attr("class");
+			
+            location.href="${path}/pp_listF.do?comparator="+comparator;
+    		
         	
         })
         
 
-
+		// 안 씀
         function getByFilter(comparator){
+    		
 
-            $.ajax({
+           /*
+    		$.ajax({
                 url:"${path}/pro_picslistF.do", // F는 filter // url에 따라 컨트롤러를 다르게 호출하기 때문에 어쩔 수 없었다.
                 type:"get",
                 data: "comparator="+comparator, // 정렬 기준을 넘겨준다.
@@ -246,7 +270,7 @@
                 }
 
 
-            })
+            }) */
 
 
 

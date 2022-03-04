@@ -43,26 +43,27 @@
 </head>
 
 <body>
-
+	
     <jsp:include page="../head_foot/new_header.jsp" flush="true"/>
-    
-	<div class="insert-knowhow-container">
-		<form class="container">
+    														<!-- kpContent=<p>ㄹㄹ%2Fp> 로 되어있다.   -->
+	<div class="insert-knowhow-container"> <!-- insertKP.do?kpUser=asd456&kpTitle=41&kpContent=%3Cp%3E%E3%84%B9%E3%84%B9%3C%2Fp%3E&files=  -->
+		<form class="container" action="${path}/scout_insert.do">
+			<input type="hidden" name="spUser" value="${members.mId}" /> <!-- 이렇게해서 form 제출하는 것도 나쁘진 않네 -->
 			<!-- 제목 입력란 -->
 			<div>
-				<input class="knowhow-ins-title" type="text" placeholder="제목을 입력해주세요."/> 
+				<input class="knowhow-ins-title" type="text" name="spTitle" placeholder="제목을 입력해주세요."/> 
 			</div>
 			<!-- 내용 입력란 -->
 			<div>
-				<textarea class="summernote" name="editordata"></textarea>  
+				<textarea class="summernote" name="spContent"></textarea>  
 			</div>
 			<!-- 등록 버튼 -->
 			<div class="ins-knowhow-button">
-				<input type="button" class="btn-ins" 
+				<input type="submit" class="btn-ins" style="float:right;"
 					value="등록" id="regBtn"/>
 			</div>
 		</form>
-	</div>
+	</div><br><br>
 
     <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 
@@ -73,5 +74,20 @@
 		  height: 350,
 		  lang: "ko-KR"
 		});
+	
+	
+	$('#regBtn').click(function(){
+		if($("[name=kpTitle]").val().trim() == ''){
+			alert("제목을 입력해주세요!");
+			return;
+		}else if($("[name=kpContent]").val().trim() == ''){
+			alert("내용을 입력해주세요!");
+			return;
+		}else{
+			$("form").submit();
+		}
+		
+	})
+	
 </script>
 </html>

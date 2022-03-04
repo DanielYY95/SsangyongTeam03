@@ -34,7 +34,7 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
    <!-- 부트스트랩 css -->
-    <link rel="stylesheet" href="${path}/CSS/bootstrap.css">
+    <link rel="stylesheet" href="${path}/css/bootstrap.css">
    <!-- 부트스트랩 js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     <script type="text/javascript" src="/js/bootstrap.js"></script>
@@ -42,8 +42,14 @@
     
     <title>동네사진작가 </title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
 
- <script type="text/javascript">
+let msg = '${msg}';
+if(msg != ''){
+	alert(msg);
+}
+
 function regchk(){
 	// 입력 유효성 검사 
 	if(document.regform.mName.value==""){
@@ -87,7 +93,59 @@ function regchk(){
 	}
 }
 
+function fn_idChk(){
+	if($("[name=mId]").val().trim()==''){
+		alert("아이디를 입력해주세요.");
+		return;
+	}
+	
+	
+	$.ajax({
+	url : "${path}/regcheck.do",
+	type : "get",
+	dataType : "json",
+	data : "mId="+$("[name=mId]").val(),
+	success : function(data){
+		var result = data.result;
+		if(result == 1){
+			alert("중복된 아이디입니다.");
+			console.log("중복");
+		}else{
+			alert("사용가능한 아이디입니다.");
+			console.log("사용가능");
+		}
+	}
+	
+	});
+}
 
+function fn_nickChk(){
+	if($("[name=mNick]").val().trim()==''){
+		alert("닉네임을 입력해주세요.");
+		return;
+	}
+	
+	
+	$.ajax({
+	url : "${path}/nickcheck.do",
+	type : "get",
+	dataType : "json",
+	data : "mNick="+$("[name=mNick]").val(),
+	success : function(data){
+		var result = data.result;
+		if(result == 1){
+			alert("중복된 닉네임입니다.");
+			console.log("중복");
+		}else{
+			alert("사용가능한 닉네임입니다.");
+			console.log("사용가능");
+		}
+	}
+	
+	});
+}
+
+ 
     </script>
 </head>
 <body>
@@ -100,7 +158,7 @@ function regchk(){
     <div class="container">
         <div class="regbox">
             <div class="reg">
-                <form action="${path }/reg.do" class="regin" method="post" name="regform" onsubmit="return regchk()">
+                <form action="${path }/reginsert.do" class="regin" method="post" name="regform" onsubmit="return regchk()">
 	                <div class="input-container">
 	                	<br><br>
 		                <input type="text" class="userReg" name="mName" maxlength="12" placeholder="이름을 입력해주세요.">
@@ -110,19 +168,25 @@ function regchk(){
 			               
 			                <input type="checkbox" name="mGender" id="chk2" value="man"/>남성
 		             	</div>
-		                <input type="text" class="userReg" name="mID" placeholder="아이디를 입력해주세요.">
-		                <input type="button" class="btnid" value="중복확인" ><br>
+		                <input type="text" class="userReg" name="mId" placeholder="아이디를 입력해주세요.">
+		                <input type="button" class="btnid" id="idChk" onclick="fn_idChk();" value="중복확인" ><br>
 		                <input type="password" class="userReg" name="mPass" placeholder="비밀번호를 입력해주세요.">
 		                <input type="password" class="userReg" name="mPass2" placeholder="비밀번호를 입력해주세요.">
 		              <!--  <input type="button" class="btnid" value="비밀번호확인" >  --> 
 		                <input type="text" class="userReg" name="mMail" placeholder="e-mail 입력해주세요.">
 		                <input type="text" class="userReg" name="mNick" placeholder="닉네임을 입력해주세요.">
-		                <input type="button" class="btnid" value="중복확인" ><br>
+		                <input type="button" class="btnid" id="nickChk" onclick="fn_nickChk();" value="중복확인" ><br>
 		                <div class="regBtn-container">
-		                	<input type="submit" class="btn1" value="회 원 가 입" >
+		                	<input type="submit" class="btn1" id="btn1"  value="회 원 가 입" >
 		                </div>
 	                </div>
                 </form>
+                <script>
+  			$("#btn1").click(function(){ 
+				$("#container").submit();
+			});
+        </script>
+                
             </div>
         </div>
 

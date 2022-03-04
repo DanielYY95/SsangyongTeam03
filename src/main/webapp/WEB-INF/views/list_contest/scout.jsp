@@ -30,23 +30,34 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 </head>
 <script>
-var recordTotal = "${recordTotal}" ; // tatalcnt
-var recordCount = "${recordCount}" ; // 10page
-var pageCnt = recordTotal / recordCount; // paging cnt
-var pageRest = recordTotal % recordCount; // last page cnt
-if(pageRest > 0 ) pageCnt+=1 ;
-var pagingList = [];
-var htmlStr = "";
-for(var i=1 ; i <=pageCnt; i++){
-	htmlStr += '<li><a style="font-size:1.5rem; color: black; text-decoration: none;" href="scout.do?startPage='+i+'">'+i+'</a></li>'
-};
-$(document).ready(function() {
-	$("#pagingList").html(htmlStr);
-	$("#insertBtn").click(function(){
-		location.href="${path}/scout_insert.do"
-	})
+
+	let msg = '${msg}';
 	
-})
+	if(msg!=''){
+		alert(msg);
+	}
+
+	var recordTotal = "${recordTotal}" ; // tatalcnt
+	var recordCount = "${recordCount}" ; // 10page
+	var pageCnt = recordTotal / recordCount; // paging cnt
+	var pageRest = recordTotal % recordCount; // last page cnt
+	
+	if(pageRest > 0 ) pageCnt+=1 ;
+	
+	var pagingList = [];
+	var htmlStr = "";
+	for(var i=1 ; i <=pageCnt; i++){
+		htmlStr += '<li><a style="font-size:1.5rem; color: black; text-decoration: none;" href="scout.do?startPage='+i+'">'+i+'</a></li>'
+	};
+	
+	$(document).ready(function() {
+		$("#pagingList").html(htmlStr);
+		$("#insertBtn").click(function(){
+			location.href="${path}/scout_insertFrm.do"
+		})
+		
+		
+	})
 </script>
 <body>
 	<head>
@@ -120,7 +131,9 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
-		<div style="float:right"><button id="insertBtn" >등록</button></div>
+		<c:if test="${not empty members.mId}">
+			<button id="insertBtn" class="btn btn-primary" style="float:right; margin-right: 10%; padding: 10px 30px;">등록</button>    
+		</c:if>
 	</div>
 	
 		<jsp:include page="../head_foot/footer.jsp" flush="true"/>

@@ -3,8 +3,15 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="springweb.Repository.ContestDao">
-	<select id="getContestList" resultType="ct">
-		SELECT *
-		FROM Contest
+	<select id="getContestList" parameterType="pm" resultType="ct">
+		select * from (
+			select rownum num, ct.* from(
+				select * from contest order by CT_CLOSE_DATE desc
+			) ct
+		)
+		where num between #{startPage} and #{endPage}
+	</select>
+	<select id="getContestListTotal" resultType="int">
+		select count(*) from contest
 	</select>
 </mapper>

@@ -31,11 +31,14 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> <!-- 출처: https://nowonbun.tistory.com/565-->
 
 
-
-    <style>
-   	
-
-    </style>
+	<script>
+	
+		let id = "${ppId}";
+	    let user = "${members.mId}";
+	  	let hasLike = "${hasLike}";
+		
+	
+	</script>
     
 
     </head>
@@ -63,8 +66,7 @@
 
         <div>
             <button class="btn btn-outline-secondary" style="border-radius: 15px;">태그</button>
-            <a href="#">태그1</a>,
-            <a href="#">태그2</a>
+            <a href="#" style="text-decoration: none; color: black;">${post.ppHash}</a>
         </div><br>
 
         <div class="Post_Bottom">
@@ -77,9 +79,18 @@
 
 
 
-            <div>
-                <button id="repBtn"  class="btn btn-danger" data-toggle="modal" data-target="#reportModal">신고</button>
-                <button id="mainBtn" class="btn btn-info">글 목록</button>
+            <div> <!-- 아이디에 따른 게시물 수정, 삭제 //  신고 변경 -->
+            	<c:if test="${members.mId eq post.ppUser}">
+	            	<button id="uptBtn" class="btn btn-primary" 
+	            			onclick="updatePP()">수정</button>
+    	        	<button id="delBtn" class="btn btn-danger" 
+    	        			onclick="deletePP()">삭제</button>
+    	        </c:if>
+    	        <c:if test="${members.mId != post.ppUser}">
+                	<button id="repBtn"  class="btn btn-danger" 
+                		data-toggle="modal" data-target="#reportModal">신고</button>
+                </c:if>
+                <button id="mainBtn" class="btn btn-secondary">글 목록</button>
             </div>
 
 
@@ -164,9 +175,11 @@
 					    		<div class="com-date">
 					    			<span><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${comment.pcDate}"/></span>
 					    		</div>
-					    		<div class="com-del">
-				    				<button class="com-delBtn" onclick="deleteComment('${comment.pcId}')">삭제</button>
-				    			</div>
+					    		<c:if test="${members.mId eq comment.pcUser}">
+						    		<div class="com-del">
+					    				<button class="com-delBtn" onclick="deleteComment('${comment.pcId}')">삭제</button>
+					    			</div>
+					    		</c:if>
 			    			</div>
 			    		</div>
 			    	</div>
@@ -184,14 +197,10 @@
   	  <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 
     <script>
-
-
+		let ppId = '${post.ppId}';	
+    
         // 다시 페이지을 호출하는 것이 아니라 ajax를 통해 가져온다. 똑같이 controller을 호출하는 것이지만
         // 일부데이터만 다시 가져오는 것이기에 속도면에서 긍정적일 것.
-
-		let id = "${ppId}";
-        let user = "${members.mId}";
-      	let hasLike = "${hasLike}";
         
         
         $("document").ready(function () { 
@@ -206,11 +215,33 @@
             // 등록한 게 있으면 등록 취소 confirm 처리
 
             // 가져올 때는 ""를 붙여서 가져와야한다.
-   	
-      	
-      	
+   		
+        let pass = "${members.mPass}"; // 프론트에 두는게 보안의 문제가 있겠지만 일단은....
+	      	
+       	
+        function updatePP(){
+        	
+        	location.href="${path}/pp_updateFrm.do?ppId="+ppId;
+        }
+        
+        
+      	function deletePP(){
+            if(confirm("게시물을 삭제하시겠습니까?")){
+            	if(prompt("삭제를 원하시면 비밀번호를 입력해주세요.")===pass){
+	        		location.href = "${path}/pp_delete.do?ppId="+ppId;
+	          		 }else{
+	          			 alert("비밀번호를 일치하지 않습니다.");
+	          		 }
+            	}
+            }
             
         $("#likeBtn").click(function(){
+        	
+        	if(user==''){
+        		alert("로그인이 필요합니다.");
+        		location.href="${path}/loginFrm.do";
+        		return;
+        	}
         	        	
             toastr.success('등록 완료!', '좋아요', {timeOut: 5000});
 
@@ -251,6 +282,13 @@
         // 신고하기 버튼 ==> 모달창이 안되서... 뭔가 JS 쪽에 문제가 있는 듯 하다.
         $('#repBtn').click(function(e){
 			e.preventDefault();
+			
+			if(user==''){
+        		alert("로그인이 필요합니다.");
+        		location.href="${path}/loginFrm.do";
+        		return;
+        	}
+			
 			$('#reportModal').modal("show");
 		});
 
@@ -288,6 +326,12 @@
 
         // ## 댓글 등록
         $("#commentsBtn").click(function(){
+        	
+        	if(user==''){
+        		alert("로그인이 필요합니다.");
+        		location.href="${path}/loginFrm.do";
+        		return;
+        	}
             
         	let value= ctext.val();
         	

@@ -5,10 +5,23 @@
 
 <mapper namespace="springweb.Repository.MembersDao">
 	<insert id="insertMembers" parameterType="members">
-		INSERT INTO members VALUES (#{mName},#{mId}, 
-				#{mPass}, #{mAuth},  #{mProType}, 
-				 #{mPhone},  #{mBirth},  #{mNick},  #{mGender},  
-				 '', '', sysdate)
+			INSERT INTO members VALUES (
+			#{mId},
+			#{mPass}, 
+			#{mName}, 
+			'', 
+			'', 
+			'', 
+			#{mBirth}, 
+			#{mMail}, 
+			#{mNick}, 
+			#{mGender}, 
+			'',
+			'',
+			sysdate,
+			''
+			)
+
 	</insert> 
 	<!-- 
 	<resultMap type="Members" id="MembersR">
@@ -21,6 +34,26 @@
 		WHERE M_ID = #{mId}
 		AND M_PASS = #{mPass}
 		
+	</select>
+	
+	<update id="updateMypage" parameterType="members">
+		UPDATE members 
+		SET M_NICK = #{mNick},
+			M_PASS = #{mPass},
+			M_INTRODUCE = #{mIntroduce}
+		WHERE M_ID = #{mId}
+	</update>
+	
+	<select id="idChk" parameterType="members" resultType="int">
+		SELECT count(*)
+		FROM members 
+		WHERE M_ID = #{mId}
+	</select>
+
+	<select id="nickChk" parameterType="members" resultType="int">
+		SELECT count(*)
+		FROM members 
+		WHERE M_NICK = #{mNick}
 	</select>
 
 	

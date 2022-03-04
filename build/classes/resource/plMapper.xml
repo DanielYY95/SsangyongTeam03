@@ -43,6 +43,23 @@
 	
 	</delete>
 	
+	<!--   18. 게시물에 좋아요 추가 -->
+	<update id="plusPPLikecnt" parameterType="string" >
+		update PRO_PICS
+			set PP_LIKECNT = PP_LIKECNT+1
+			where PP_ID = #{ppId} 
+	
+	</update>
+	
+	<!--   19. 게시물에 좋아요 감소 -->
+	<update id="minusPPLikecnt" parameterType="string" >
+		update PRO_PICS
+			set PP_LIKECNT = PP_LIKECNT-1
+			where PP_ID = #{ppId} 
+	
+	</update>
+	
+	
 </mapper>
 
 

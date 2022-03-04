@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
-<fmt:requestEncoding value="utf-8"/>     
+<fmt:requestEncoding value="utf-8"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>동네사진작가</title>
-    
+
     <link href="${path}/CSS/insert_pics.css" rel="stylesheet" type="text/css"/>
 <!-- 폰트어썸 CDN -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -28,85 +28,112 @@
 
 <body>
    <jsp:include page="../head_foot/new_header.jsp" flush="true"/>
-    
-<div class="ins-pics-container">	
+
+<div class="ins-pics-container">
 	<div class="general_ratio">
-		<form>
+		<form action="${path}/pp_update.do" id="ppInsForm" method="post" enctype="multipart/form-data">
 			<div class="select-div">
 				<!-- 지역 종류 -->
-				<select class="form-select-loc">
-					<option class="loc-title" selected>지역</option>
-					<option value="1">서울특별시</option>
-					<option value="2">부산광역시</option>
-					<option value="3">대구광역시</option>
-					<option value="4">인천광역시</option>
-					<option value="5">광주광역시</option>
-					<option value="6">대전광역시</option>
-					<option value="7">울산광역시</option>
-					<option value="8">세종특별자치시</option>
-					<option value="9">경기도</option>
-					<option value="10">강원도</option>
-					<option value="11">충청북도</option>
-					<option value="12">충청남도</option>
-					<option value="13">전라북도</option>
-					<option value="14">전라남도</option>
-					<option value="15">경상북도</option>
-					<option value="16">경상남도</option>
-					<option value="17">제주특별자치도</option>
+				<select class="form-select-loc" name="ppPlace">
+					<option class="loc-title">지역</option>
+					<option value="서울특별시">서울특별시</option>
+					<option value="부산광역시">부산광역시</option>
+					<option value="대구광역시">대구광역시</option>
+					<option value="인천광역시">인천광역시</option>
+					<option value="광주광역시">광주광역시</option>
+					<option value="대전광역시">대전광역시</option>
+					<option value="울산광역시">울산광역시</option>
+					<option value="세종특별자치시">세종특별자치시</option>
+					<option value="경기도">경기도</option>
+					<option value="강원도">강원도</option>
+					<option value="충청북도">충청북도</option>
+					<option value="충청남도">충청남도</option>
+					<option value="전라북도">전라북도</option>
+					<option value="전라남도">전라남도</option>
+					<option value="경상북도">경상북도</option>
+					<option value="경상남도">경상남도</option>
+					<option value="제주특별자치도">제주특별자치도</option>
 				</select>
 				<!-- 사진 종류(임의로 해놨습니다.)-->
-				<select class="form-pics-kind">
-					<option class="pics-title" selected>종류</option>
-					<option >자연</option>
-					<option >도시</option>
-					<option >인물</option>
+				<select class="form-pics-kind" name="ppCategory">
+					<option class="pics-title">종류</option>
+					<option>자연</option>
+					<option>도시</option>
+                    <option >야경</option>
+                    <option>셀카</option>
+                    <option >공원</option>
+                    <option >사람</option>
+                    <option >동물</option>
 				</select>
 			</div>
-					
-			<div class="general_ratio2">	
+
+			<div class="general_ratio2">
 					<!-- 사진 이미지 넣는 곳 -->
 					<div id="file-pics-camera">
-						<input type="file" id="pics" name="insert_pics" onchange="readURL(this);">
-						<img id="img-camera" src="${path}/image/camera3.png">
-						<img id="img-camera2"src="${path}/image/camera.png">
+						<input type="file" id="pics" name="ppFile" onchange="readURL(this);" />   
+						<!--  input[type=file].value 는 스크립트 제어가 불가능. 보안상 value 셋팅이 안되 -->
+						<img style="vertical-align: baseline;" id="img-camera" src="${path}${post.ppPhoto}" />
 					</div>
 				<div class="general_ratio3">
 					<!-- 제목 입력란 -->
 					<div>
-						<input class="pics-ins-title"type="text" placeholder="제목을 입력해주세요."/>
+						<input class="pics-ins-title"type="text" name="ppTitle" placeholder="제목을 입력해주세요." value="${post.ppTitle}" />
 					</div>
 					<!-- 사진에 대한 짧은 소개 -->
 					<div>
-						<input type="text" class="pics-ins-text"placeholder="사진에 대해 설명해주세요.">
+						<textarea wrap="hard" class="pics-ins-text" name="ppContent" placeholder="사진에 대해 설명해주세요." >${post.ppContent}</textarea>
 					</div>
 					<!-- 해쉬태그 입력란 -->
 					<div>
-            			<input type="text" id="tag" class="pics-ins-hash" size="7" placeholder="해시태그 등록"/>
+            			<input type="text" id="tag" class="pics-ins-hash" size="7" placeholder="해시태그 등록"  />
           			</div>
                 </div>
                 <!-- 해쉬태그 엔터시, 나타나는 출력란 -->
-                <input type="hidden" value="" name="tag" id="rdTag" />
-            		<ul id="tag-list"></ul>
-				<span style="display:block; margin-top:10px;">
+                <input type="hidden" name="ppHash" id="rdTag" value="${post.ppHash}" />
+  				
+                <input type="hidden" name="ppId" value="${post.ppId}" />
+            		         	<!-- 해쉬태그 ul -->
+            	<ul id="tag-list"></ul>
+            	<!-- 해쉬태그 css건드릴 경우 규격, 등록 버튼이 밀려나므로 margin-top을 더 넓히면 된다. -->
+					<div style="display:block; margin-top:30px;"><br>
 					<!-- 사진 규격 맞추는 버튼 -->
 					<input class="img-standard-btn"type="button" value="이미지 규격" onclick="Resize()"/>
-				
+
 					<!-- 등록 버튼 -->
 					<span>
-						<input type="button" class="pics-ins-button" 
-							value="등록" id="regBtn"/>
+						<input type="button" class="pics-ins-button"
+							value="수정" id="uptBtn"/>
+						<input type="button" class="pics-ins-button" style="margin-left: 4%;"
+							value="취소" id="quitBtn"/>
 					</span>
-				</span>
+				</div>
 			</div>
 		</form>
 	</div>
-</div>
+</div><br><br><br><br>
 
-  <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 
+	  <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 
 </body>
+
+
 <script>
+	$(".form-select-loc").val("${post.ppPlace}");
+	$(".form-pics-kind").val("${post.ppCategory}");
+
+
+	$("#pics").click(function(){
+		console.log(1);
+	})
+	
+	$("#quitBtn").click(function(){
+		location.href="${path}/pp_list.do";
+	})
+
+
+
+
 // 사진 등록
 // 프로필 파일 등록
 function readURL(input) {
@@ -120,7 +147,7 @@ function readURL(input) {
 	    document.getElementById('img-camera') = "";
 	  }
 	}
-	
+
 $(function () {
 	// 카메라 이미지를 클릭했을 때
 	$('#img-camera').click(function (e) {
@@ -146,7 +173,7 @@ var reader = new FileReader();
     reader.onload = function(e) {
     img.src = e.target.result;
     // HTML5 canvas 객체를 생성합니다
-    var canvas = document.createElement("canvas");      
+    var canvas = document.createElement("canvas");
     var ctx = canvas.getContext("2d");
     // 캔버스에 업로드된 이미지를 그려줍니다
     ctx.drawImage(img, 0, 0);
@@ -158,7 +185,7 @@ var reader = new FileReader();
     var height = img.height;
     width = MAX_WIDTH;
     height = MAX_HEIGHT;
-    
+
     canvas.width = width;
     canvas.height = height;
     // canvas에 변경된 크기의 이미지를 다시 그려줍니다.
@@ -168,12 +195,14 @@ var reader = new FileReader();
     var dataurl = canvas.toDataURL("image/png");
     document.getElementById('img-camera').src = dataurl;
     }
-reader.readAsDataURL(file);
+	reader.readAsDataURL(file);
 }
 ///////////////////////////////
 $(document).ready(function () {
     var tag = {};
     var counter = 0;
+    let hashlength = 0;
+    
     // 입력한 값을 태그로 생성한다.
     function addTag (value) {
         tag[counter] = value;
@@ -186,12 +215,19 @@ $(document).ready(function () {
         });
     }
     // 서버에 제공
-    $("#tag-form").on("submit", function (e) {
-        var value = marginTag(); // return array
-        $("#rdTag").val(value); 
-        $(this).submit();
-    });
+    //$("#ppInsForm").on("submit", function (e) {
+    //    var value = marginTag(); // return array
+    //    $("#rdTag").val(value);
+    //    $(this).submit();
+    //});
     $("#tag").on("keypress", function (e) {
+    	
+   	  // 해시태그가 3개이상이면 빠꾸
+        if(hashlength>=3){
+        	alert("해시태그는 최대 3개까지 등록 가능합니다.");
+        	return;
+        }
+    	
         var self = $(this);
         //엔터나 스페이스바 눌렀을때 실행
         if (e.key === "Enter" || e.keyCode == 32) {
@@ -202,26 +238,56 @@ $(document).ready(function () {
                 var result = Object.values(tag).filter(function (word) {
                     return word === tagValue;
                 })
-            
+          
+
                 // 해시태그가 중복되었는지 확인
-                if (result.length == 0) { 
-                    $("#tag-list").append("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>x</span></li>");
-                    addTag(tagValue);
+                if (result.length == 0) {
+                	 $("#tag-list").append("<li class='tag-item'><input class='hashInput' value='#"+tagValue
+                	 			+"' readonly disabled style='background:'#f7e600';' size='10'; /><input type='button' class='del-btn' idx='"
+                	 			+counter+"' value='x'></li>");
+                    addTag("#"+tagValue);
                     self.val("");
-                } else {
+                    hashlength+= 1;
+                }  else {
                     alert("태그값이 중복됩니다.");
                 }
             }
             e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
         }
     });
-    // 삭제 버튼 
+    // 삭제 버튼
     // 인덱스 검사 후 삭제
     $(document).on("click", ".del-btn", function (e) {
         var index = $(this).attr("idx");
         tag[index] = "";
+        
         $(this).parent().remove();
+        hashlength-= 1;
     });
+    
+    
+	$('#uptBtn').click(function(){
+		if($("[name=ppTitle]").val().trim() == ''){
+			alert("제목을 입력해주세요!");
+			return;
+		}
+		
+		if($("[name=ppContent]").val().trim() == ''){
+			alert("내용을 입력해주세요!");
+			return;
+		}
+		
+	
+		var value = marginTag(); 
+	    $("#rdTag").val(value);
+
+		$("#ppInsForm").submit();
+		
+		
+	})
+    
+    
+    
 })
 </script>
 </html>

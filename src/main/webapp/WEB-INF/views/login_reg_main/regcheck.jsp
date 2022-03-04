@@ -28,9 +28,7 @@
      crossorigin="anonymous" 
      referrerpolicy="no-referrer"></script>
      <!-- css 파일 -->
-    <link rel="stylesheet" href="${path }/css/regchk.css">
-    <link rel="stylesheet" href="${path }/css/footer.css">
-	
+    <link rel="stylesheet" href="${path }/CSS/regchk.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap');
         </style>
@@ -169,13 +167,11 @@
     필수동의 2개가 체크되어야만 버튼을 활성화되어야한다. 
     모든 체크가 체크되면 위에 작성한 agreemenst Object에 보내주고,
     버튼을 활성화/비활성화 시키는 함수를 실행시킨다. */
-
 //(1) DOM 요소
 const form = document.querySelector("#form_wrap");
 const checkAll = document.querySelector(".terms__check__all input");
 const checkBoxes = document.querySelectorAll(".input__check input");
 const submitBtn = document.querySelector("button");
-
 //체크 여부를 false/true로 제어할 것임
 //각 체크박스에 지정한 id 값과 value값 체크여부 저장하는 object
 const agreements = {
@@ -184,7 +180,6 @@ const agreements = {
  allowPromo: false, //프로모션 선택동의
  allowLocal: false, //위치정보 선택동의
 };
-
 //(4-1) 모두동의 제외 4개의 체크박스 개별체크
 checkBoxes.forEach((i) => i.addEventListener("input", onechk));
 //체크박스에 input 이벤트 발생할때마다 onechk() 함수 실행 !!
@@ -206,7 +201,6 @@ function chkStatus() {
 	   checkAll.checked = false;
  	}
 }
-
 //(3)필수동의 체크여부 확인 후 버튼 활성화/비활성화 함수
 function btnchk() {
 	 const { allowService, privacyPolicy } = agreements; //agreements의 필수동의 요소들을 가져와 변수에 담는다
@@ -217,7 +211,6 @@ function btnchk() {
    // 버튼의 disabled를 false(버튼 활성화)
  }
 }
-
 //(2) 모두동의 클릭 함수
 	checkAll.addEventListener("click", (e) => {
 	 const { checked } = e.target;
@@ -239,11 +232,10 @@ function btnchk() {
  }
  btnchk(); //if문이 끝나면 btnchk()함수 실행
 });
-
     </script>
     
-<!-- 푸터 --> 
-		<footer>
+    <!-- 푸터 --> 
+    		<footer>
 	 <jsp:include page="../head_foot/footer.jsp" flush="true"/>
 		</footer>
 		

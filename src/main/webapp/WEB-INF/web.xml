@@ -59,5 +59,12 @@
  	</error-page> 
 	-->
 	
+	<!-- 세션 자동 종료. 자동종료되게 해야 서버 부담 감소
+		==> 분단위이다. 마지막으로 요청한 시점으로부터(정확히 말하면 아무 움직이 없는경우)		
+		다만, 이를 어떻게 알리지? -->
+	<session-config>
+		<session-timeout>30</session-timeout> 
+	</session-config>
+	
 	   
 </web-app>

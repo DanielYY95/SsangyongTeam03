@@ -38,6 +38,8 @@
     <title>동네사진작가 </title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap");
+  
+   
     </style>
      <script src="https://code.jquery.com/jquery-3.6.0.js"></script> <!-- jquery 라이브러리 CDN -->
     
@@ -65,7 +67,7 @@
 		if(loginMsg!=""){
 			alert(loginMsg);
 			if(loginMsg=="로그인 성공!"){ // 로그인 성공을 보여주고나서 이동
-				location.href="${path}/main.do";
+				location.href="${path}/main.do"; // 원래라면 요청이 들어온 곳으로 보내고 싶은데, mapping url은...
 			}
 		}
 		
@@ -134,5 +136,8 @@
 		});
 	    
     </script>
+    
+    </body>
+    
     
 </html>

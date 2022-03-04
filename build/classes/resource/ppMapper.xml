@@ -10,9 +10,6 @@
 		<!--  // 1. 전체 조회리스트
 	public ArrayList<Pro_Pics> getPPList(); -->
 	
-	<select id="getPPList" resultType="pp">
-		select * from PRO_PICS
-	</select>
 	
 	<!--  // 2. 게시물 읽기
 	public Pro_Pics getPP(String id); // pp_id가 아직 미정.... -->
@@ -27,18 +24,32 @@
 	public ArrayList<Pro_Pics> getPPListF(String comparator); -->
 	
 	
-	<select id="getPPListF" parameterType="string" resultType="pp" >
+	<select id="getPPListDate"  resultType="pp" >
 		select * from PRO_PICS
-		order by #{comparator} DESC;
+		order by PP_DATE DESC
 		
 	</select>
+	
+	<select id="getPPListView"  resultType="pp" >
+		select * from PRO_PICS
+		order by PP_VIEW DESC
+		
+	</select>
+	
+	<select id="getPPListLike"  resultType="pp" >
+		select * from PRO_PICS
+		order by PP_LIKECNT DESC
+		
+	</select>
+	
+	
 	
 	<!--  // 4. 지역명 조회리스트
 	public ArrayList<Pro_Pics> getPPListP(String place); -->
 	
 	<select id="getPPListP" parameterType="string" resultType="pp" >
 		select * from PRO_PICS
-		where PP_PLACE = #{ppPlace}
+		where PP_PLACE like '%' || #{ppPlace} || '%' 
 		
 	</select>
 	
@@ -59,11 +70,16 @@
 	
 	<insert id="insertPP" parameterType="pp">
 		insert into PRO_PICS values(
-			'pp' || LPAD(ppId,5,'0'), #{ppTitle}, #{ppContent}, #{ppPhoto}, 
-			#{ppCategory}, #{ppHash}, #{ppPlace}, 0, sysdate, #{ppUser}
+			'pp' || LPAD(pp_seq.nextval,5,'0'), #{ppTitle}, #{ppContent}, '/upload/' || #{ppPhoto},
+			#{ppCategory}, #{ppHash}, #{ppPlace}, 0, sysdate, #{ppUser},0
 		)
-	
 	</insert>
+	
+	<insert id="insertFileInfo" parameterType="fi">
+		INSERT INTO fileInfo values(file_seq.currval, #{pathinfo}, 
+		#{fname}, sysdate)
+							
+	</insert> <!-- 흠..... 이렇게 따로 테이블을 두어야하나...?? 이걸 pro_pics 안에 넣고싶다... -->
 	
 	
 	<!--  // 7. 게시물 삭제
@@ -87,13 +103,26 @@
 		update PRO_PICS
 			set PP_TITLE = #{ppTitle},  
 				PP_CONTENT = #{ppContent},
-				PP_PHOTO = #{ppPhoto},
+				PP_PHOTO = '/upload/' || #{ppPhoto},
 				PP_CATEGORY = #{ppCategory},
 				PP_HASH = #{ppHash},
 				PP_PLACE = #{ppPlace}
-			where PP_ID = #{ppId}  <!-- 이 부분이 좀 자신없네... property 인식하나? -->
+			where PP_ID = #{ppId} 
 	
 	</update>
+	
+	
+	<update id="updatePPnoPic" parameterType="pp">
+		update PRO_PICS
+			set PP_TITLE = #{ppTitle},  
+				PP_CONTENT = #{ppContent},
+				PP_CATEGORY = #{ppCategory},
+				PP_HASH = #{ppHash},
+				PP_PLACE = #{ppPlace}
+			where PP_ID = #{ppId}  
+	
+	</update>
+	
 			
 	<!-- 16. 조회수 증가 -->
 	<update id="addPPView" parameterType="string">
@@ -102,7 +131,9 @@
 			where PP_ID = #{ppId}
 	
 	</update>
-
+	
+	
+	<!--  -->
 	
 	
 </mapper>

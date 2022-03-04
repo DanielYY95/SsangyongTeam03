@@ -22,6 +22,9 @@
 		<typeAlias alias="sp" type="springweb.vo.Scout_Post"/>
 		<typeAlias alias="ct" type="springweb.vo.Contest"/>
 		<typeAlias alias="pm" type="springweb.vo.PageMaker"/>
+		<typeAlias alias="fi" type="springweb.vo.FileInfo"/>
+		<typeAlias alias="mp" type="springweb.vo.Meet_Post"/>
+		
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/ppMapper.xml" />
@@ -36,6 +39,8 @@
 		<mapper resource="resource/MembersMapper.xml"/>
 		<mapper resource="resource/spMapper.xml"/>
 		<mapper resource="resource/ctMapper.xml"/>
+		<mapper resource="resource/mypageMapper.xml"/>
+	
 		
 	</mappers>
 
