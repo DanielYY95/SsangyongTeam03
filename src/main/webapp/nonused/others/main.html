@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>   
+    <link rel="stylesheet" href="./css/main.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+     integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" 
+     crossorigin="anonymous" 
+     referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" 
+     integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" 
+     crossorigin="anonymous" 
+     referrerpolicy="no-referrer"></script>
+     <!-- css 파일 -->
+    <link rel="stylesheet" href="./footer.css"/>
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Myeongjo&family=Song+Myung&display=swap');
+        </style>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <title>동네사진작가 </title>
+</head>
+<body>
+     <!-- header  -->
+     <header>
+        <div class="inner">
+            <div class="logo">
+            <a href="/">
+                <i class="fas fa-camera-retro" style="font-size: 70px" ></i>
+            </a>
+            <h2>동네사진작가</h2></div>
+            
+            
+            
+            <div class="sub-menu">
+                <div class="search">
+                    <input type="text">
+                    <div class="material-icons">
+                      <a href="https://www.naver.com/">search</a>  
+                    </div>
+                </div>
+                <ul class="menu">
+                <li>
+                    <a href="./login.html">로그인</a>
+                </li>
+                <li>
+                    <a href="./regcheck.html">회원가입</a>
+                </li><li>
+                    <a href="javascript:void(0)">마이페이지</a>
+                </li>
+                </ul>
+                  
+               
+            </div>
+            <ul class="main-menu">
+                <li class="item">  
+                    <div class="item__name">
+                        <a href="main.html">홈</a> </div>
+                    <div class="item__name">
+                        <a href="Town_Pics.html">동네작가사진</a> </div>
+                    <div class="item__name">
+                        <a href="Pro_Pics.html">전문가사진</a> </div>
+                    <div class="item__name">
+                        <a href="KnowHow.html">노하우</a> </div>
+                    <div class="item__name">
+                        <a href="/">만남의광장</a> </div>
+                    <div class="item__name">
+                        <a href="/">공모전</a> </div>
+                    <div class="item__name">
+                        <a href="/">스카웃후기</a> </div>
+                </li>
+            </ul>
+            </div>
+     </header>
+    
+        <!------------------------------   내 작업 영역  ------------------------------>
+
+
+     <!-- 김효은 VISUAL 메인 중심부 -->
+     <section class="visual">
+         <div class="inner">
+             <div class="title fade-in">
+                 <ul class="text">
+                 <li class="text1">동네 근처의 사진작가</li>
+                 <li class="text2">취미가 같은 사람과 작품을 나누고,<br>
+                    전문가에게 연락이 올 수 있는 기회를 만들어요.</li>
+                </ul>
+              </div>
+              <div id="slideShow">
+                <ul class="slides">
+                    <li><img src="https://cdn.pixabay.com/photo/2021/12/29/14/47/water-6901805_960_720.jpg" alt="">
+                    <p>동네작가 [김효은 작가]</p> </li>
+                    <li><img src="./image/flower.jpg" alt="">
+                    <p>동네작가 [조민혁 작가]</p> </li>
+                    <li><img src="./image/moon.jpg" alt="">
+                    <p>동네작가 [양초명 작가]</p></li>
+                    <li><img src="./image/fox.jpg" alt="">
+                    <p>동네작가 [한가람 작가]</p></li>
+                </ul>
+                <p class="controller">
+                    <!-- &lang : 왼쪽 방향 화살표 
+                         &rang : 오른쪽 방향 화살표 -->
+                    <span class="prev">&lang;</span>
+                    <span class="next">&rang;</span>
+                </p>
+              </div>
+              <script src="./js/slideShow.js"></script>
+         </div>
+     </section>
+     <section class="zone">
+         <div class="inner">
+            <div class="photolist">
+                <h2>전문가 사진</h2>
+                <div id=slideShow2>
+                <ul class="slides2">
+                    <li><img src="https://cdn.pixabay.com/photo/2022/01/13/07/05/house-6934535_960_720.jpg" alt="">
+                        <p>동네작가 [전지원 작가]</p> </li>
+                        <li><img src="https://cdn.pixabay.com/photo/2016/10/17/07/53/busan-night-scene-1747130_960_720.jpg" alt="">
+                        <p>동네작가 [조민혁 작가]</p> </li>
+                        <li><img src="https://cdn.pixabay.com/photo/2016/02/05/03/58/moon-1180345_960_720.jpg" alt="">
+                        <p>동네작가 [양초명 작가]</p></li>
+                        <li><img src="https://cdn.pixabay.com/photo/2021/06/18/06/51/seagull-6345331_960_720.jpg" alt="">
+                        <p>동네작가 [한가람 작가]</p></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+     </section>
+     
+      <!-- 푸터 -->
+		<footer id="footer">
+			<div id="footerInner" class="clearfix">
+				<article id="footerBottom">
+					<div class="area-box clearfix">
+						<article class="footer-left-con">
+							<div class="foot-info-menu-m">
+								<ul class="clearfix">
+									<li><b>T . </b>+82.1.2345.6789</li>
+									<li><b>F . </b>+82.1.2345.6789</li>
+									<li><b>E . </b><a href="mailto:hanga9030@naver.com">hanga09030@naver.com</a></li>
+								</ul> 
+							</div>
+							<div class="footer-address">
+								<p>	
+									<b>Location.</b>
+									<span>132, Teheran-ro, Gangnam-gu, Seoul, Republic of Korea</span>
+									<span class="foot-info-menu">
+									|<em class="fc-white"> </em><b>TEL. </b>+82.1.2345.6789
+									|<em class="fc-white"> </em><b>FAX. </b>+82.1.2345.6789
+									|<em class="fc-white"> </em><b>EMAIL. </b><a href="mailto:hanga9030@naver.com">hanga09030@naver.com</a>
+									</span>
+								</p>
+								<div class="footer-copyright"><span class="fc-white">관리자</span></a><em class="fc-white"> </em>| Copyright (C) 2022 <em class="fc-red">LOCAL PHOTO</em><em class="fc-white"> </em>All rights reserved.</div>
+							</div>
+						</article>
+						<div class="footer-copyright-m"><span class="fc-white">관리자</span></a><em class="fc-white"> </em>| Copyright (C) 2022 <em class="fc-red">LOCAL PHOTO</em><em class="fc-white"> </em>All rights reserved.</div>
+					</div>
+				</article>
+			</div>
+		</footer>
+</body>
+</html>
