@@ -3,8 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >		
 
-<mapper namespace="springweb.DAO.MembersDao">
-		
+<mapper namespace="springweb.Repository.MembersDao">
 	<insert id="insertMembers" parameterType="members">
 			INSERT INTO members VALUES (
 			#{mId},
@@ -18,18 +17,25 @@
 			#{mNick}, 
 			#{mGender}, 
 			'',
-			'',mapp
+			'',
 			sysdate,
 			''
 			)
 
 	</insert> 
+	<!-- 
+	<resultMap type="Members" id="MembersR">
+		<result column="mId" property="id"/>
+		<result column="mPass" property="pass"/>
+	</resultMap> -->
 	
 	<select id="login"  parameterType="members" resultType="members" >
 		SELECT * FROM MEMBERS
 		WHERE M_ID = #{mId}
 		AND M_PASS = #{mPass}
+		
 	</select>
+	
 	<update id="updateMypage" parameterType="members">
 		UPDATE members 
 		SET M_NICK = #{mNick},
@@ -39,9 +45,16 @@
 	</update>
 	
 	<select id="idChk" parameterType="members" resultType="int">
-	SELECT count(*)
-	FROM members 
-	WHERE M_ID = #{mId}
+		SELECT count(*)
+		FROM members 
+		WHERE M_ID = #{mId}
 	</select>
+
+	<select id="nickChk" parameterType="members" resultType="int">
+		SELECT count(*)
+		FROM members 
+		WHERE M_NICK = #{mNick}
+	</select>
+
 	
 </mapper>

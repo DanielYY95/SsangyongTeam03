@@ -1,9 +1,16 @@
 # db 정보
 
 driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@localhost:1521:xe
+url=jdbc:oracle:thin:@//14.33.134.85:1521/xe
 user=scott
 pass=tiger
 
 
+# 업로드할 파일 경로 설정
+upload=C:/Users/A/OneDrive - UOS/prj4/src/main/webapp/upload/
 
+### 
+C:/Users/Daniel Yang/OneDrive - 서울시립대학교/prj4/src/main/webapp/upload/
+
+###
+C:/Users/A/OneDrive - UOS/prj4/src/main/webapp/upload/

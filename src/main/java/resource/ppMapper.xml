@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
+	
+
+<mapper namespace="springweb.Repository.PP_Dao">
+	
+	
+		<!--  // 1. 전체 조회리스트
+	public ArrayList<Pro_Pics> getPPList(); -->
+	
+	
+	<!--  // 2. 게시물 읽기
+	public Pro_Pics getPP(String id); // pp_id가 아직 미정.... -->
+		
+	<select id="getPP" parameterType="string" resultType="pp">
+		select * from PRO_PICS
+		where PP_ID = #{ppId}
+
+	</select>
+	
+	<!--  // 3. 정렬기준 조회리스트 => order by 대신 인덱스를 사용하라?
+	public ArrayList<Pro_Pics> getPPListF(String comparator); -->
+	
+	
+	<select id="getPPListDate"  resultType="pp" >
+		select * from PRO_PICS
+		order by PP_DATE DESC
+		
+	</select>
+	
+	<select id="getPPListView"  resultType="pp" >
+		select * from PRO_PICS
+		order by PP_VIEW DESC
+		
+	</select>
+	
+	<select id="getPPListLike"  resultType="pp" >
+		select * from PRO_PICS
+		order by PP_LIKECNT DESC
+		
+	</select>
+	
+	
+	
+	<!--  // 4. 지역명 조회리스트
+	public ArrayList<Pro_Pics> getPPListP(String place); -->
+	
+	<select id="getPPListP" parameterType="string" resultType="pp" >
+		select * from PRO_PICS
+		where PP_PLACE like '%' || #{ppPlace} || '%' 
+		
+	</select>
+	
+	
+	<!--  // 5. 태그별 조회리스트
+	public ArrayList<Pro_Pics> getPPListC(String category); -->
+	
+	<select id="getPPListC" parameterType="string" resultType="pp" >
+		select * from PRO_PICS
+		where PP_CATEGORY = #{ppCategory}
+		
+	</select>
+	
+	
+	
+	<!--  // 6. 게시물 등록
+	public void insertPP(Pro_Pics ins); -->
+	
+	<insert id="insertPP" parameterType="pp">
+		insert into PRO_PICS values(
+			'pp' || LPAD(pp_seq.nextval,5,'0'), #{ppTitle}, #{ppContent}, '/upload/' || #{ppPhoto},
+			#{ppCategory}, #{ppHash}, #{ppPlace}, 0, sysdate, #{ppUser},0
+		)
+	</insert>
+	
+	<insert id="insertFileInfo" parameterType="fi">
+		INSERT INTO fileInfo values(file_seq.currval, #{pathinfo}, 
+		#{fname}, sysdate)
+							
+	</insert> <!-- 흠..... 이렇게 따로 테이블을 두어야하나...?? 이걸 pro_pics 안에 넣고싶다... -->
+	
+	
+	<!--  // 7. 게시물 삭제
+	public void deletePP(String id); -->
+	
+	
+	<delete id="deletePP" parameterType="string">
+		delete from PRO_PICS
+		where PP_ID = #{ppId}
+	
+	</delete>
+	
+	
+	<!--  // 8. 게시물 수정
+	public void updatePP(Pro_Pics ins); 
+	수정되는 건 제목, 내용, 사진, 카테고리, 해쉬태그, 지역명 이다.	
+	
+	-->
+
+	<update id="updatePP" parameterType="pp">
+		update PRO_PICS
+			set PP_TITLE = #{ppTitle},  
+				PP_CONTENT = #{ppContent},
+				PP_PHOTO = '/upload/' || #{ppPhoto},
+				PP_CATEGORY = #{ppCategory},
+				PP_HASH = #{ppHash},
+				PP_PLACE = #{ppPlace}
+			where PP_ID = #{ppId} 
+	
+	</update>
+	
+	
+	<update id="updatePPnoPic" parameterType="pp">
+		update PRO_PICS
+			set PP_TITLE = #{ppTitle},  
+				PP_CONTENT = #{ppContent},
+				PP_CATEGORY = #{ppCategory},
+				PP_HASH = #{ppHash},
+				PP_PLACE = #{ppPlace}
+			where PP_ID = #{ppId}  
+	
+	</update>
+	
+			
+	<!-- 16. 조회수 증가 -->
+	<update id="addPPView" parameterType="string">
+		update PRO_PICS
+			set PP_VIEW = PP_VIEW+1
+			where PP_ID = #{ppId}
+	
+	</update>
+	
+	
+	<!--  -->
+	
+	
+</mapper>
+
+
+
+

@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
 <configuration>
+
+	<settings> 
+		<setting name="mapUnderscoreToCamelCase" value="true"/> 
+	</settings>
 	
 	
-</configuration>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--  
-
-
-### 참고
-
-<typeAliases>
-		<typeAlias alias="emp" type="springweb.vo.Emp"/>
-		<typeAlias alias="emp2" type="springweb.vo.Emp2"/>
-		<typeAlias alias="dept" type="springweb.vo.Dept"/>
-		<typeAlias alias="saldetail" type="springweb.vo.SalDetail"/>
+	<typeAliases>
+		<typeAlias alias="pp" type="springweb.vo.Pro_Pics"/>
+		<typeAlias alias="pl" type="springweb.vo.Pro_Like"/>
+		<typeAlias alias="pc" type="springweb.vo.Pro_Comment"/>
+		<typeAlias alias="lp" type="springweb.vo.Local_Pics"/>
+		<typeAlias alias="ll" type="springweb.vo.Local_Like"/>
+		<typeAlias alias="lc" type="springweb.vo.Local_Comment"/>
+		<typeAlias alias="kp" type="springweb.vo.Knowhow_Post"/>
+		<typeAlias alias="kc" type="springweb.vo.Knowhow_Comment"/>
+		<typeAlias alias="kl" type="springweb.vo.Knowhow_Like"/>
+		<typeAlias type="springweb.vo.Members" alias="members"/>
+		<typeAlias alias="sp" type="springweb.vo.Scout_Post"/>
+		<typeAlias alias="ct" type="springweb.vo.Contest"/>
+		<typeAlias alias="pm" type="springweb.vo.PageMaker"/>
+		<typeAlias alias="fi" type="springweb.vo.FileInfo"/>
+		<typeAlias alias="mp" type="springweb.vo.Meet_Post"/>
+		
 	</typeAliases>
 	<mappers>
-		<mapper resource="resource/EmpMapper.xml" />
-		<mapper resource="resource/cntMapper.xml" />
-		<mapper resource="resource/DeptMapper.xml" />
-		<mapper resource="resource/getEnameMapper.xml" />
-	</mappers>
+		<mapper resource="resource/ppMapper.xml" />
+		<mapper resource="resource/plMapper.xml" />
+		<mapper resource="resource/pcMapper.xml" />
+		<mapper resource="resource/lpMapper.xml" />
+		<mapper resource="resource/llMapper.xml" />
+		<mapper resource="resource/lcMapper.xml" />
+		<mapper resource="resource/kpMapper.xml" />
+		<mapper resource="resource/klMapper.xml" />
+		<mapper resource="resource/kcMapper.xml" />
+		<mapper resource="resource/MembersMapper.xml"/>
+		<mapper resource="resource/spMapper.xml"/>
+		<mapper resource="resource/ctMapper.xml"/>
+		<mapper resource="resource/mypageMapper.xml"/>
 	
-	-->
+		
+	</mappers>
+
+
+</configuration>
